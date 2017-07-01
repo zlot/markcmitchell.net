@@ -1151,55 +1151,6 @@ export default function Main()
         };
     }
 
-    function http_get_multiple(urls, ondone, onerror)
-    {
-        var count = urls.length,
-            done = 0,
-            error = false,
-            handlers;
-
-        handlers = urls.map(function(url)
-        {
-            return http_get(
-                url.url,
-                function(result)
-                {
-                    // a single request was successful
-
-                    if(error) {
-                        return;
-                    }
-
-                    if(url.onready) {
-                        url.onready(result);
-                    }
-
-                    done++;
-
-                    if(done === count) {
-                        ondone();
-                    }
-                },
-                function(result, status_code)
-                {
-                    // a single request has errored
-
-                    if(!error)
-                    {
-                        error = true;
-
-                        onerror();
-
-                        for(var i = 0; i < handlers.length; i++)
-                        {
-                            handlers[i].cancel();
-                        }
-                    }
-                }
-            );
-        });
-    }
-
     /*
      * The mousemove event which allows moving around
      */
