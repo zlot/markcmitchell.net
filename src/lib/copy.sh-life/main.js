@@ -895,25 +895,6 @@ export default function Main()
         drawer.fit_bounds(bounds);
     }
 
-    /*
-     * load a pattern consisting of otca metapixels
-     */
-    /*function load_otca(otca_on, otca_off, field)
-    {
-        var bounds = life.get_bounds(field);
-
-        life.set_step(10);
-        max_fps = 6;
-
-        drawer.cell_width = 1 / 32;
-
-        life.make_center(field, bounds);
-        life.setup_meta(otca_on, otca_off, field, bounds);
-
-        update_hud();
-        drawer.redraw(life.root);
-    }*/
-
     function run()
     {
         var n = 0,
