@@ -457,11 +457,6 @@ export default function Main()
                 function load(text)
                 {
                     setup_pattern(text, undefined);
-
-                    if(previous !== current_pattern.title) {
-                        show_alert(current_pattern);
-                        $("import_file").value = "";
-                    }
                 }
 
                 if(files && files.length)
@@ -527,7 +522,6 @@ export default function Main()
                     drawer.border_width = DEFAULT_BORDER;
                 }
 
-                $("pattern_name").style.color =
                 $("statusbar").style.color = drawer.cell_color;
                 $("statusbar").style.textShadow = "0px 0px 1px " + drawer.cell_color;
 
@@ -558,16 +552,11 @@ export default function Main()
                 //$("background_color").value = drawer.background_color;
             };
 
-            $("settings_abort").onclick =
-                $("alert_close").onclick = function()
+            $("settings_abort").onclick = function()
             {
                 hide_overlay();
             };
 
-            $("pattern_name").onclick = function()
-            {
-                show_alert(current_pattern);
-            };
 
 
             function show_pattern_chooser()
@@ -611,7 +600,6 @@ export default function Main()
                             {
                                 setup_pattern(text, name);
                                 set_query(name);
-                                show_alert(current_pattern);
 
                                 life.set_step(0);
                                 set_text($("label_step"), "1");
@@ -721,7 +709,6 @@ export default function Main()
             drawer.redraw(life.root);
 
             update_hud();
-            set_text($("pattern_name"), result.title || "no name");
 
             if(!pattern_source_url && pattern_id)
             {
@@ -826,51 +813,6 @@ export default function Main()
         if(time < 3)
         {
             set_text($("label_fps"), "> 9000");
-        }
-    }
-
-    function show_alert(pattern)
-    {
-        if(pattern.title || pattern.comment || pattern.urls.length)
-        {
-            show_overlay("alert");
-
-            set_text($("pattern_title"), pattern.title || "");
-            set_text($("pattern_description"), pattern.comment || "");
-
-            $("pattern_urls").innerHTML = "";
-            for(let url of pattern.urls)
-            {
-                let a = document.createElement("a");
-                a.href = url;
-                a.textContent = url;
-                a.target = "_blank";
-                $("pattern_urls").appendChild(a);
-                $("pattern_urls").appendChild(document.createElement("br"));
-            }
-
-            if(pattern.id)
-            {
-                let full_link = view_link(pattern.id);
-                show_element($("pattern_link_container"));
-                set_text($("pattern_link"), full_link);
-                $("pattern_link").href = full_link;
-            }
-            else
-            {
-                hide_element($("pattern_link_container"));
-            }
-
-            if(pattern.source_url)
-            {
-                show_element($("pattern_file_container"));
-                set_text($("pattern_file_link"), pattern.source_url);
-                $("pattern_file_link").href = pattern.source_url;
-            }
-            else
-            {
-                hide_element($("pattern_file_container"));
-            }
         }
     }
 

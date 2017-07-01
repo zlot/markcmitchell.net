@@ -32,7 +32,6 @@ const LifeCanvas = () => (
     <div id="label_gen" title="Generation">0</div>
     <div id="label_pop" title="Population">0</div>
     <div id="label_step" title="Generation per Step">1</div>
-    <span id="pattern_name" className="link" title="Pattern infos"></span>
 </div>
 <div id="overlay">
     <div id="import_dialog" style={{display: 'none'}}>
@@ -52,25 +51,7 @@ const LifeCanvas = () => (
         <span id="import_submit" className="button2">Import</span>
         <span id="import_abort" className="button2">Abort</span>
     </div>
-    <div id="alert" style={{display: 'none'}}>
-        <div id="alert_text">
-            <h2 id="pattern_title"></h2>
-            <div id="pattern_description"></div>
-            
-            <div id="pattern_urls"></div>
-            
-            <div id="pattern_file_container">
-                Pattern file: <a target="_blank" id="pattern_file_link" href=""></a>
-            </div>
-            <div id="pattern_link_container">
-                Link to view online:
-                <a id="pattern_link" target="_blank" href=""></a>
-            </div>
-        </div>
-        
-        
-        <span className="button2" id="alert_close">Ok</span>
-    </div>
+
     <div id="pattern_chooser" style={{display: 'none'}}>
         Source: <a href="http://www.conwaylife.com/wiki/Main_Page" target="_blank">www.conwaylife.com</a>. Thanks!
         <div id="pattern_list"></div>
