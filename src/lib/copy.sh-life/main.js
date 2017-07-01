@@ -91,18 +91,6 @@ export default function Main()
         drawer.set_size(window.innerWidth, document.body.offsetHeight);
         reset_settings();
 
-        // production setup
-        var query = window.location.search.substr(1).split("&"),
-            param,
-            parameters = {};
-
-        for(var i = 0; i < query.length; i++)
-        {
-            param = query[i].split("=");
-
-            parameters[param[0]] = param[1];
-        }
-
         load_pattern('main.png');
 
         function load_pattern(patternToLoad)
