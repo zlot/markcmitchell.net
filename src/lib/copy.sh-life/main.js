@@ -11,9 +11,6 @@ var
 
 export default function Main()
 {
-    //var console = console || { log : function() {} };
-    var initialTitle = document.title;
-
     if(!document.addEventListener)
     {
         // IE 8 seems to switch into rage mode if the code is only loaded partly,
@@ -94,18 +91,10 @@ export default function Main()
         drawer.set_size(window.innerWidth, document.body.offsetHeight);
         reset_settings();
 
-        // This gets called, when a pattern is loaded.
-        // It has to be called at least once before anything can happen.
-        // Since we always load a pattern, it's not necessary at this point.
-        //life.clear_pattern();
-
         // production setup
-        // loads a pattern defined by ?pattern=filename (without extension)
-        // or a random small pattern instead
         var query = window.location.search.substr(1).split("&"),
             param,
-            parameters = {},
-            pattern_parameter;
+            parameters = {};
 
         for(var i = 0; i < query.length; i++)
         {
@@ -120,8 +109,6 @@ export default function Main()
 
             life.set_step(step_parameter);
         }
-
-        pattern_parameter = parameters["pattern"];
 
         load_pattern('main.png');
 
@@ -158,22 +145,9 @@ export default function Main()
 
         function init_ui()
         {
-            $("about_close").style.display = "inline";
-
-            hide_element($("notice"));
-            hide_overlay();
-
-            show_element($("toolbar"));
-            show_element($("statusbar"));
-            show_element($("about_main"));
-
-            var style_element = document.createElement("style");
-            document.head.appendChild(style_element);
-
             window.onresize = debounce(function()
             {
                 drawer.set_size(window.innerWidth, document.body.offsetHeight);
-
                 requestAnimationFrame(lazy_redraw.bind(0, life.root));
             }, 500);
 
@@ -584,16 +558,6 @@ export default function Main()
                 {
                     drawer.border_width = DEFAULT_BORDER;
                 }
-
-                //drawer.cell_color = validate_color($("cell_color").value) || "#ccc";
-                //drawer.background_color = validate_color($("background_color").value) || "#000";
-                var style_text = document.createTextNode(
-                    ".button,.menu>div{background-color:" + drawer.cell_color +
-                    ";box-shadow:2px 2px 4px " + drawer.cell_color + "}" +
-                    "#statusbar>div{border-color:" + drawer.cell_color + "}"
-                );
-
-                style_element.appendChild(style_text);
 
                 $("pattern_name").style.color =
                 $("statusbar").style.color = drawer.cell_color;
