@@ -112,19 +112,6 @@ export default function Main()
 
         load_pattern('main.png');
 
-        if(parameters["noui"] === "1")
-        {
-            var elements = [
-                "statusbar", "about_button", "examples_menu",
-                "import_button", "settings_button", "zoomout_button",
-                "zoomin_button", "rewind_button"
-            ];
-
-            for(var i = 0; i < elements.length; i++)
-            {
-                $(elements[i]).style.display = "none";
-            }
-        }
 
         if(parameters["fps"] && /^\d+$/.test(parameters["fps"]))
         {
