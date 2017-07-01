@@ -8,11 +8,8 @@ function debug(msg) {
     }
 }
 
-var
-    /** @const */
-    DEFAULT_BORDER = 0.25,
-    /** @const */
-    DEFAULT_FPS = 20;
+const DEFAULT_BORDER = 0.25;
+const DEFAULT_FPS = 20;
 
 
 export default function Main()
@@ -491,8 +488,8 @@ export default function Main()
         drawer.border_width = DEFAULT_BORDER;
         drawer.cell_width = 2;
 
-        life.rule_b = 1 << 3;
-        life.rule_s = 1 << 2 | 1 << 3;
+        life.rule_s = 1 << 2 | 1 << 3; // 12 // 
+        life.rule_b = 1 << 3; // 8 // 
         life.set_step(0);
 
         max_fps = DEFAULT_FPS;
@@ -531,14 +528,14 @@ export default function Main()
             life.setup_field(result.field_x, result.field_y, bounds);
 
             life.save_rewind_state();
-
+            
             if(result.rule_s && result.rule_b)
             {
                 life.set_rules(result.rule_s, result.rule_b);
             }
             else
             {
-                life.set_rules(1 << 2 | 1 << 3, 1 << 3);
+                life.set_rules(1 << 2 | 1 << 3, 1 << 3); // 12/8
             }
 
             fit_pattern();
