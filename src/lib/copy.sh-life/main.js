@@ -112,12 +112,6 @@ export default function Main()
 
         load_pattern('main.png');
 
-
-        if(parameters["fps"] && /^\d+$/.test(parameters["fps"]))
-        {
-            max_fps = +parameters["fps"];
-        }
-
         function load_pattern(patternToLoad)
         {
             show_overlay("loading_popup");
