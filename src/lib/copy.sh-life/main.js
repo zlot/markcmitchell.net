@@ -548,16 +548,7 @@ export default function Main()
                 $("gen_step").value = Math.pow(2, life.step);
 
                 $("border_width").value = drawer.border_width;
-                //$("cell_color").value = drawer.cell_color;
-                //$("background_color").value = drawer.background_color;
             };
-
-            $("settings_abort").onclick = function()
-            {
-                hide_overlay();
-            };
-
-
 
             function show_pattern_chooser()
             {

@@ -100,7 +100,6 @@ const LifeCanvas = () => (
         
         <span id="settings_submit" className="button2">Save</span>
         <span id="settings_reset" className="button2">Reset</span>
-        <span id="settings_abort" className="button2">Abort</span>
     </div>
     <div id="loading_popup" style={{display: 'none'}} >
     </div>
