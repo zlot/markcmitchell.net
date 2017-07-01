@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
-import './App.css'
+import './App.scss'
 
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
