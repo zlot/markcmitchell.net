@@ -167,9 +167,6 @@ const LifeCanvas = () => (
             Generation step
             <small>Only powers of 2 (automatically rounded)</small>
         </div>
-        <div className="right">
-            <input type="number" step="any" id="gen_step" style={{width: 60}} />
-        </div>
         
         <div className="left">
             Border width
