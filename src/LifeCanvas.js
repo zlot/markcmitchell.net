@@ -11,7 +11,6 @@ const LifeCanvas = () => (
     </div>
     <div id="import_button" className="button">Import</div>
     <div className="button" id="settings_button">Settings</div>
-    <div className="button" id="clear_button">Clear</div>
     <div className="button" id="rewind_button">Rewind</div>
     <div className="button" id="run_button">Run</div>
 

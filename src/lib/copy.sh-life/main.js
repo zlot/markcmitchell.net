@@ -130,7 +130,7 @@ export default function Main()
             var elements = [
                 "statusbar", "about_button", "examples_menu",
                 "import_button", "settings_button", "zoomout_button",
-                "zoomin_button", "clear_button", "rewind_button"
+                "zoomin_button", "rewind_button"
             ];
 
             for(var i = 0; i < elements.length; i++)
@@ -212,21 +212,6 @@ export default function Main()
                 {
                     run();
                 }
-            };
-
-            $("clear_button").onclick = function()
-            {
-                stop(function()
-                {
-                    set_text($("pattern_name"), "");
-                    set_query("");
-
-                    life.clear_pattern();
-                    update_hud();
-
-                    drawer.center_view();
-                    drawer.redraw(life.root);
-                });
             };
 
             $("rewind_button").onclick = function()
