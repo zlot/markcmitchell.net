@@ -130,8 +130,7 @@ export default function Main()
             var elements = [
                 "statusbar", "about_button", "examples_menu",
                 "import_button", "settings_button", "zoomout_button",
-                "zoomin_button", "clear_button", "superstep_button",
-                "step_button", "rewind_button"
+                "zoomin_button", "clear_button", "rewind_button"
             ];
 
             for(var i = 0; i < elements.length; i++)
@@ -212,22 +211,6 @@ export default function Main()
                 else
                 {
                     run();
-                }
-            };
-
-            $("step_button").onclick = function()
-            {
-                if(!running)
-                {
-                    step(true);
-                }
-            };
-
-            $("superstep_button").onclick = function()
-            {
-                if(!running)
-                {
-                    step(false);
                 }
             };
 
@@ -426,17 +409,6 @@ export default function Main()
                 {
                     // enter
                     $("run_button").onclick();
-                    return false;
-                }
-                else if(chr === 32)
-                {
-                    // space
-                    $("step_button").onclick();
-                    return false;
-                }
-                else if(chr === 9)
-                {
-                    $("superstep_button").onclick();
                     return false;
                 }
                 else if(chr === 189 || chr === 173 || chr === 109)
