@@ -410,44 +410,6 @@ export default function Main()
                 };
             }
 
-            $("import_submit").onclick = function()
-            {
-                var previous = current_pattern && current_pattern.title;
-                var files = $("import_file").files;
-
-                function load(text)
-                {
-                    setup_pattern(text, undefined);
-                }
-
-                if(files && files.length)
-                {
-                    let filereader = new FileReader();
-                    filereader.onload = function()
-                    {
-                        load(filereader.result);
-                    }
-                    filereader.readAsText(files[0]);
-                }
-                else
-                {
-                    load($("import_text").value);
-                }
-            };
-
-            $("import_abort").onclick = function()
-            {
-                hide_overlay();
-            };
-
-            $("import_button").onclick = function()
-            {
-                show_overlay("import_dialog");
-                $("import_text").value = "";
-
-                set_text($("import_info"), "");
-            };
-
             $("settings_submit").onclick = function()
             {
                 var new_rule_s,
@@ -627,7 +589,7 @@ export default function Main()
 
         if(result.error)
         {
-            set_text($("import_info"), result.error);
+            console.error(result.error);
             return;
         }
 

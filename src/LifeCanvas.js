@@ -5,7 +5,6 @@ const LifeCanvas = () => (
 <div>
   <div id="toolbar" style={{display: 'none'}}>
 
-    <div id="import_button" className="button">Import</div>
     <div className="button" id="settings_button">Settings</div>
     <div className="button" id="rewind_button">Rewind</div>
     <div className="button" id="run_button">Run</div>
@@ -34,23 +33,6 @@ const LifeCanvas = () => (
     <div id="label_step" title="Generation per Step">1</div>
 </div>
 <div id="overlay">
-    <div id="import_dialog" style={{display: 'none'}}>
-        <h2>Import Pattern</h2>
-        Supports RLE, Life 1.06, Plaintext
-        
-        
-        <textarea placeholder="Paste pattern file here" id="import_text"></textarea>
-        
-        Or: <input type="file" id="import_file" />
-        
-        
-        <div id="import_info"></div>
-        
-        
-        
-        <span id="import_submit" className="button2">Import</span>
-        <span id="import_abort" className="button2">Abort</span>
-    </div>
 
     <div id="pattern_chooser" style={{display: 'none'}}>
         Source: <a href="http://www.conwaylife.com/wiki/Main_Page" target="_blank">www.conwaylife.com</a>. Thanks!
