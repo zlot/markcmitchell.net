@@ -473,55 +473,6 @@ export default function Main()
                 $("border_width").value = drawer.border_width;
             };
 
-            function show_pattern_chooser()
-            {
-                if(patterns_loaded)
-                {
-                    show_overlay("pattern_chooser");
-                    return;
-                }
-
-                patterns_loaded = true;
-
-
-                show_overlay("loading_popup");
-                http_get(pattern_path + "list", function(text)
-                {
-                    var patterns = text.split("\n"),
-                        list = $("pattern_list");
-
-                    show_overlay("pattern_chooser");
-
-                    patterns.forEach(function(pattern)
-                    {
-                        var
-                            name = pattern.split(" ")[0],
-                            size = pattern.split(" ")[1],
-                            name_element = document.createElement("div"),
-                            size_element = document.createElement("span");
-
-                        set_text(name_element, name);
-                        set_text(size_element, size);
-                        size_element.className = "size";
-
-                        name_element.appendChild(size_element);
-                        list.appendChild(name_element);
-
-                        name_element.onclick = function()
-                        {
-                            show_overlay("loading_popup");
-                            http_get(rle_link(name), function(text)
-                            {
-                                setup_pattern(text, name);
-                                set_query(name);
-
-                                life.set_step(0);
-                                set_text($("label_step"), "1");
-                            });
-                        }
-                    });
-                });
-            };
         }
     }
 

@@ -34,11 +34,6 @@ const LifeCanvas = () => (
 </div>
 <div id="overlay">
 
-    <div id="pattern_chooser" style={{display: 'none'}}>
-        Source: <a href="http://www.conwaylife.com/wiki/Main_Page" target="_blank">www.conwaylife.com</a>. Thanks!
-        <div id="pattern_list"></div>
-        <span className="button2" id="pattern_close">Close</span>
-    </div>
     <div id="settings_dialog" style={{display: 'none'}}>
         <h2>Settings</h2>
         <div className="left" id="select_rules">
