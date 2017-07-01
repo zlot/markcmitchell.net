@@ -1216,16 +1216,6 @@ export default function Main()
         node.style.display = "block";
     }
 
-    function pad0(str, n)
-    {
-        while(str.length < n)
-        {
-            str = "0" + str;
-        }
-
-        return str;
-    }
-
     // Put sep as a seperator into the thousands spaces of and Integer n
     // Doesn't handle numbers >= 10^21
     function format_thousands(n, sep)
