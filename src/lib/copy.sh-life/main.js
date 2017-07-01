@@ -83,8 +83,8 @@ export default function Main()
         }
 
         init_ui.call(this);
+        drawer.set_size(window.innerWidth, window.innerHeight);
 
-        drawer.set_size(window.innerWidth, document.body.offsetHeight);
         reset_settings();
 
         load_pattern('main.png');
