@@ -65,9 +65,8 @@ export default function Main()
 
 
     // setup
-    window.onload = function()
+    (function()
     {
-        
         if(loaded)
         {
             // onload has been called already
@@ -456,9 +455,7 @@ export default function Main()
             };
 
         }
-    }
-
-    document.addEventListener("DOMContentLoaded", window.onload, false);
+    })()
 
 
     function rle_link(id)
