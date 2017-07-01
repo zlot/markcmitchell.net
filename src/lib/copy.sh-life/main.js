@@ -297,7 +297,6 @@ export default function Main()
                 else if(chr === 27)
                 {
                     // escape
-                    hide_overlay();
                     return false;
                 }
                 else if(chr === 13)
@@ -416,7 +415,6 @@ export default function Main()
                     new_rule_b,
                     new_gen_step;
 
-                hide_overlay();
 
                 new_rule_s = formats.parse_rule($("rule").value, true);
                 new_rule_b = formats.parse_rule($("rule").value, false);
@@ -458,8 +456,6 @@ export default function Main()
                 reset_settings();
 
                 lazy_redraw(life.root);
-
-                hide_overlay();
             }
 
             $("settings_button").onclick = function()
@@ -562,8 +558,6 @@ export default function Main()
             {
                 life.set_rules(1 << 2 | 1 << 3, 1 << 3);
             }
-
-            hide_overlay();
 
             fit_pattern();
             drawer.redraw(life.root);
@@ -698,12 +692,6 @@ export default function Main()
                 hide_element(child);
             }
         }
-    }
-
-    function hide_overlay()
-    {
-        hide_element($("overlay"));
-        document.body.style.overflow = "hidden";
     }
 
     /**
