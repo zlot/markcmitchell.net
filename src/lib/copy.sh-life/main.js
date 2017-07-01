@@ -134,24 +134,7 @@ export default function Main()
 
         pattern_parameter = parameters["pattern"];
 
-        if(pattern_parameter && /^[a-z0-9_\.]+$/.test(pattern_parameter))
-        {
-            if(parameters["meta"] === "1")
-            {
-                try_load_meta();
-            }
-            else
-            {
-                // a pattern name has been given as a parameter
-                // try to load it, fallback to random pattern
-
-                try_load_pattern();
-            }
-        }
-        else
-        {
-            load_random();
-        }
+        load_random();
 
         if(parameters["noui"] === "1")
         {
@@ -171,78 +154,6 @@ export default function Main()
         if(parameters["fps"] && /^\d+$/.test(parameters["fps"]))
         {
             max_fps = +parameters["fps"];
-        }
-
-        function try_load_meta()
-        {
-            // loading metapixels is broken now, keep this for later
-            load_random();
-
-            /*
-            var otca_on, otca_off, otca_pattern;
-
-            show_overlay("loading_popup");
-            http_get_multiple([
-                {
-                    url : pattern_path + "otcametapixel.rle",
-                    onready : function(result)
-                    {
-                        var field = formats.parse_rle(result).field;
-
-                        life.move_field(field, -5, -5);
-                        life.setup_field(field);
-
-                        otca_on = life.root.se.nw;
-                    }
-                },
-                {
-                    url : pattern_path + "otcametapixeloff.rle",
-                    onready : function(result)
-                    {
-                        var field = formats.parse_rle(result).field;
-
-                        life.move_field(field, -5, -5);
-                        life.setup_field(field);
-
-                        otca_off = life.root.se.nw;
-                    }
-                },
-                {
-                    url : pattern_path + pattern_parameter + ".rle",
-                    onready : function(result)
-                    {
-                        otca_pattern = formats.parse_rle(result).field;
-                    }
-                }
-            ],
-            function()
-            {
-                load_otca(otca_on, otca_off, otca_pattern);
-            },
-            function()
-            {
-                // fallback to random pattern
-                load_random();
-            });
-            */
-        }
-
-        function try_load_pattern()
-        {
-            show_overlay("loading_popup");
-            http_get(
-                rle_link(pattern_parameter),
-                function(text)
-                {
-                    //console.profile("main setup");
-                    setup_pattern(text, pattern_parameter);
-                    //console.profileEnd("main setup");
-                },
-                function()
-                {
-                    load_random();
-                }
-            );
         }
 
         function load_random()
