@@ -2,6 +2,12 @@ import LifeUniverse from './life';
 import LifeCanvasDrawer from './draw';
 import formats from './formats';
 
+function debug(msg) {
+    if(process.env.NODE_ENV === 'development') {
+        console.log(msg)
+    }
+}
+
 var
     /** @const */
     DEFAULT_BORDER = 0.25,
@@ -72,8 +78,7 @@ export default function Main()
 
         if(!drawer.init(document.body))
         {
-            set_text($("notice").getElementsByTagName("h4")[0],
-                "Canvas-less browsers are not supported. I'm sorry for that.");
+            alert("Canvas-less browsers are not supported. I'm sorry for that.");
             return;
         }
 
@@ -224,8 +229,7 @@ export default function Main()
             window.onmousemove = function(e)
             {
                 var coords = drawer.pixel2cell(e.clientX, e.clientY);
-
-                set_text($("label_mou"), coords.x + ", " + coords.y);
+                debug(`mouse: ${coords.x}, ${coords.y}`);
                 fix_width($("label_mou"));
             }
 
@@ -327,7 +331,6 @@ export default function Main()
                     if(step >= 0)
                     {
                         life.set_step(step);
-                        set_text($("label_step"), Math.pow(2, step));
                     }
 
                     return false;
@@ -348,7 +351,6 @@ export default function Main()
                 var step = life.step + 1;
 
                 life.set_step(step);
-                set_text($("label_step"), Math.pow(2, step));
             };
 
             $("slower_button").onclick = function()
@@ -358,14 +360,12 @@ export default function Main()
                     var step = life.step - 1;
 
                     life.set_step(step);
-                    set_text($("label_step"), Math.pow(2, step));
                 }
             };
 
             $("normalspeed_button").onclick = function()
             {
                 life.set_step(0);
-                set_text($("label_step"), 1);
             };
 
             $("zoomin_button").onclick = function()
@@ -416,11 +416,9 @@ export default function Main()
 
                 if(!new_gen_step || new_gen_step < 0) {
                     life.set_step(0);
-                    set_text($("label_step"), "1");
                 }
                 else {
                     life.set_step(new_gen_step);
-                    set_text($("label_step"), Math.pow(2, new_gen_step));
                 }
 
                 max_fps = Number($("max_fps").value);
@@ -479,7 +477,7 @@ export default function Main()
         if(running)
         {
             running = false;
-            set_text($("run_button"), "Run");
+            debug("Run");
 
             onstop = callback;
         }
@@ -502,11 +500,10 @@ export default function Main()
         life.rule_b = 1 << 3;
         life.rule_s = 1 << 2 | 1 << 3;
         life.set_step(0);
-        set_text($("label_step"), "1");
 
         max_fps = DEFAULT_FPS;
 
-        set_text($("label_zoom"), "1:2");
+        debug("zoom is 1:2");
         fix_width($("label_mou"));
 
         drawer.center_view();
@@ -578,7 +575,6 @@ export default function Main()
             interval,
             per_frame = frame_time;
 
-        set_text($("run_button"), "Stop");
 
         running = true;
 
@@ -646,11 +642,6 @@ export default function Main()
         drawer.redraw(life.root);
 
         update_hud(1000 / (Date.now() - time));
-
-        if(time < 3)
-        {
-            set_text($("label_fps"), "> 9000");
-        }
     }
 
     function show_overlay(overlay_id)
@@ -682,24 +673,16 @@ export default function Main()
      */
     function update_hud(fps)
     {
-        if(fps) {
-            set_text($("label_fps"), fps.toFixed(1));
-        }
-
-        set_text($("label_gen"), format_thousands(life.generation, "\u202f"));
         fix_width($("label_gen"));
-
-        
-        set_text($("label_pop"), format_thousands(life.root.population, "\u202f"));
         fix_width($("label_pop"));
 
         if(drawer.cell_width >= 1)
         {
-            set_text($("label_zoom"), "1:" + drawer.cell_width);
+            debug("zoom is 1:" + drawer.cell_width);
         }
         else
         {
-            set_text($("label_zoom"), 1 / drawer.cell_width + ":1");
+            debug("zoom is " + 1 / drawer.cell_width + ":1");
         }
     }
 
@@ -709,11 +692,6 @@ export default function Main()
         {
             drawer.redraw(node);
         }
-    }
-
-    function set_text(obj, text)
-    {
-        obj.textContent = String(text);
     }
 
     /**
