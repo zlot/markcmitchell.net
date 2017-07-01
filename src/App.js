@@ -5,12 +5,10 @@ import './App.css'
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
 
-Main()
-
 class App extends Component {
 
   componentDidMount = () => {
-
+    this.main = new Main()
   }
 
   render() {
