@@ -59,10 +59,7 @@ export default function Main()
 
         
         life = new LifeUniverse(),
-        drawer = new LifeCanvasDrawer(),
-
-        patternToLoad = 'main.png';
-
+        drawer = new LifeCanvasDrawer();
 
 
     /** @type {function(function())} */
@@ -126,7 +123,7 @@ export default function Main()
 
         pattern_parameter = parameters["pattern"];
 
-        load_random();
+        load_pattern('main.png');
 
         if(parameters["noui"] === "1")
         {
@@ -148,7 +145,7 @@ export default function Main()
             max_fps = +parameters["fps"];
         }
 
-        function load_random()
+        function load_pattern(patternToLoad)
         {
             show_overlay("loading_popup");
             http_get(
