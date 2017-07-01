@@ -238,7 +238,6 @@ export default function Main()
             {
                 stop(function()
                 {
-                    set_title();
                     set_text($("pattern_name"), "");
                     set_query("");
 
@@ -871,7 +870,6 @@ export default function Main()
 
             update_hud();
             set_text($("pattern_name"), result.title || "no name");
-            set_title(result.title);
 
             if(!pattern_source_url && pattern_id)
             {
@@ -1205,19 +1203,6 @@ export default function Main()
         else
         {
             window.history.replaceState(null, "", "/life/");
-        }
-    }
-
-    /** @param {string=} title */
-    function set_title(title)
-    {
-        if(title)
-        {
-            document.title = title + " - " + initialTitle;
-        }
-        else
-        {
-            document.title = initialTitle;
         }
     }
 
