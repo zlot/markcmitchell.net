@@ -11,12 +11,13 @@ var
 
 export default function Main()
 {
-    if(!document.addEventListener)
-    {
-        // IE 8 seems to switch into rage mode if the code is only loaded partly,
-        // so we are saying goodbye earlier
+    if(!document.addEventListener) {
+        // IE 8 seems to switch into rage mode if the code is only loaded partly, so we are saying goodbye earlier
         return;
     }
+    function $(id) {
+        return document.getElementById(id);
+    }    
 
     var
 
@@ -818,11 +819,6 @@ export default function Main()
             last_mouse_x = coords.x;
             last_mouse_y = coords.y;
         }
-    }
-
-    function $(id)
-    {
-        return document.getElementById(id);
     }
 
     function set_query(filename)
