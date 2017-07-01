@@ -11,6 +11,9 @@ function debug(msg) {
 const DEFAULT_BORDER = 0.25;
 const DEFAULT_FPS = 20;
 
+const BACKGROUND_COLOR = '#0b00b5';
+const CELL_COLOR = '#ff0200';
+
 
 export default function Main()
 {
@@ -482,8 +485,8 @@ export default function Main()
 
     function reset_settings()
     {
-        drawer.background_color = "#000000";
-        drawer.cell_color = "#cccccc";
+        drawer.background_color = BACKGROUND_COLOR;
+        drawer.cell_color = CELL_COLOR;
 
         drawer.border_width = DEFAULT_BORDER;
         drawer.cell_width = 2;
