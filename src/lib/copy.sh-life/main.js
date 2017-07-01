@@ -749,12 +749,6 @@ export default function Main()
         element.style.width = element.last_width + "px";
     }
 
-
-    function validate_color(color_str)
-    {
-        return /^#(?:[a-f0-9]{3}|[a-f0-9]{6})$/i.test(color_str) ? color_str : false;
-    }
-
     /**
      * @param {function(string,number)=} onerror
      */
