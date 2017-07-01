@@ -103,13 +103,6 @@ export default function Main()
             parameters[param[0]] = param[1];
         }
 
-        if(parameters["step"] && /^\d+$/.test(parameters["step"]))
-        {
-            var step_parameter = Math.round(Math.log(Number(parameters["step"])) / Math.LN2);
-
-            life.set_step(step_parameter);
-        }
-
         load_pattern('main.png');
 
         function load_pattern(patternToLoad)
@@ -122,7 +115,6 @@ export default function Main()
                 }
             );
         }
-
 
         function init_ui()
         {
