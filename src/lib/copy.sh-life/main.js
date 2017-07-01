@@ -61,15 +61,7 @@ export default function Main()
         life = new LifeUniverse(),
         drawer = new LifeCanvasDrawer(),
 
-        // example setups which are run at startup
-        // loaded from examples/
-        /** @type {Array.<string>} */
-        examples = (
-            "turingmachine,Turing Machine|gunstar,Gunstar|hacksaw,Hacksaw|tetheredrake,Tethered rake|" +
-            "primer,Primer|infinitegliderhotel,Infinite glider hotel|" +
-            "p94s,P94S|breeder1,Breeder 1|tlogtgrowth,tlog(t) growth|" +
-            "logt2growth,Log(t)^2 growth|infinitelwsshotel,Infinite LWSS hotel|c5greyship,c/5 greyship"
-        ).split("|");
+        patternToLoad = 'main.png';
 
 
 
@@ -158,13 +150,11 @@ export default function Main()
 
         function load_random()
         {
-            var random_pattern = examples[Math.random() * examples.length | 0].split(",")[0];
-
             show_overlay("loading_popup");
             http_get(
-                rle_link(random_pattern),
+                rle_link(patternToLoad),
                 function(text) {
-                    setup_pattern(text, random_pattern);
+                    setup_pattern(text, patternToLoad);
                 }
             );
         }
@@ -739,100 +729,46 @@ export default function Main()
 
                 patterns_loaded = true;
 
-                if(false)
+
+                show_overlay("loading_popup");
+                http_get(pattern_path + "list", function(text)
                 {
-                    var frame = document.createElement("iframe");
-                    frame.src = "examples/";
-                    frame.id = "example_frame";
-                    $("pattern_list").appendChild(frame);
+                    var patterns = text.split("\n"),
+                        list = $("pattern_list");
 
                     show_overlay("pattern_chooser");
 
-                    window["load_pattern"] = function(id)
+                    patterns.forEach(function(pattern)
                     {
-                        show_overlay("loading_popup");
-                        http_get(rle_link(id), function(text)
+                        var
+                            name = pattern.split(" ")[0],
+                            size = pattern.split(" ")[1],
+                            name_element = document.createElement("div"),
+                            size_element = document.createElement("span");
+
+                        set_text(name_element, name);
+                        set_text(size_element, size);
+                        size_element.className = "size";
+
+                        name_element.appendChild(size_element);
+                        list.appendChild(name_element);
+
+                        name_element.onclick = function()
                         {
-                            setup_pattern(text, id);
-                            set_query(id);
-                            show_alert(current_pattern);
-                            life.set_step(0);
-                            set_text($("label_step"), "1");
-                        });
-                    }
-                }
-                else
-                {
-                    patterns_loaded = true;
-
-                    show_overlay("loading_popup");
-                    http_get(pattern_path + "list", function(text)
-                    {
-                        var patterns = text.split("\n"),
-                            list = $("pattern_list");
-
-                        show_overlay("pattern_chooser");
-
-                        patterns.forEach(function(pattern)
-                        {
-                            var
-                                name = pattern.split(" ")[0],
-                                size = pattern.split(" ")[1],
-                                name_element = document.createElement("div"),
-                                size_element = document.createElement("span");
-
-                            set_text(name_element, name);
-                            set_text(size_element, size);
-                            size_element.className = "size";
-
-                            name_element.appendChild(size_element);
-                            list.appendChild(name_element);
-
-                            name_element.onclick = function()
+                            show_overlay("loading_popup");
+                            http_get(rle_link(name), function(text)
                             {
-                                show_overlay("loading_popup");
-                                http_get(rle_link(name), function(text)
-                                {
-                                    setup_pattern(text, name);
-                                    set_query(name);
-                                    show_alert(current_pattern);
+                                setup_pattern(text, name);
+                                set_query(name);
+                                show_alert(current_pattern);
 
-                                    life.set_step(0);
-                                    set_text($("label_step"), "1");
-                                });
-                            }
-                        });
+                                life.set_step(0);
+                                set_text($("label_step"), "1");
+                            });
+                        }
                     });
-                }
-            };
-
-            if(false)
-            {
-                var examples_menu = $("examples_menu");
-
-                examples.forEach(function(example)
-                {
-                    var file = example.split(",")[0],
-                        name = example.split(",")[1],
-
-                        menu = document.createElement("div");
-
-                    set_text(menu, name);
-
-                    menu.onclick = function()
-                    {
-                        show_overlay("loading_popup");
-                        http_get(rle_link(file), function(text)
-                        {
-                            setup_pattern(text, file);
-                            set_query(file);
-                            show_alert(current_pattern);
-                        });
-                    }
-
-                    examples_menu.appendChild(menu);
                 });
-            }
+            };
         }
     }
 
