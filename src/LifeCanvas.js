@@ -5,9 +5,6 @@ const LifeCanvas = () => (
 <div>
   <div id="toolbar" style={{display: 'none'}}>
 
-    <div className="menu" id="examples_menu">
-        <div id="pattern_button">Patterns</div>
-    </div>
     <div id="import_button" className="button">Import</div>
     <div className="button" id="settings_button">Settings</div>
     <div className="button" id="rewind_button">Rewind</div>

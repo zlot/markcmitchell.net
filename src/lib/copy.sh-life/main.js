@@ -559,9 +559,7 @@ export default function Main()
             };
 
             $("settings_abort").onclick =
-                $("pattern_close").onclick =
-                $("alert_close").onclick =
-                $("about_close").onclick = function()
+                $("alert_close").onclick = function()
             {
                 hide_overlay();
             };
@@ -571,8 +569,6 @@ export default function Main()
                 show_alert(current_pattern);
             };
 
-            //$("more_button").onclick = show_pattern_chooser;
-            $("pattern_button").onclick = show_pattern_chooser;
 
             function show_pattern_chooser()
             {
