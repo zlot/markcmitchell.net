@@ -438,38 +438,6 @@ export default function Main()
                 update_hud();
             };
 
-            $("middle_button").onclick = function()
-            {
-                drawer.center_view();
-                lazy_redraw(life.root);
-            };
-
-            var positions = [
-                ["ne",  1, -1],
-                ["nw", -1, -1],
-                ["se",  1,  1],
-                ["sw", -1,  1],
-                ["n",   0, -1],
-                ["e",  -1,  0],
-                ["s",   0,  1],
-                ["w",   1,  0],
-            ];
-
-            for(var i = 0; i < positions.length; i++)
-            {
-                var node = document.getElementById(positions[i][0] + "_button");
-
-                node.onclick = (function(info)
-                {
-                    return function()
-                    {
-                        drawer.move(info[1] * -30, info[2] * -30);
-                        lazy_redraw(life.root);
-                    };
-                })(positions[i]);
-
-            }
-
             var select_rules = $("select_rules").getElementsByTagName("span");
 
             for(var i = 0; i < select_rules.length; i++)
