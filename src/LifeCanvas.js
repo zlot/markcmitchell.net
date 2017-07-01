@@ -5,7 +5,6 @@ const LifeCanvas = () => (
 <div>
   <div id="toolbar" style={{display: 'none'}}>
 
-    <div className="button" id="about_button">About</div>
     <div className="menu" id="examples_menu">
         <div id="pattern_button">Patterns</div>
     </div>
@@ -39,51 +38,6 @@ const LifeCanvas = () => (
     <span id="pattern_name" className="link" title="Pattern infos"></span>
 </div>
 <div id="overlay">
-    <div id="about">
-        <h2>Conway's Game of Life in JavaScript</h2>
-        <div id="notice">
-
-        </div>
-        This is an implementation of <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Conway's Game of Life</a> or
-        more precisely, the super-fast <a href="https://en.wikipedia.org/wiki/Hashlife" target="_blank">Hashlife</a> algorithm,
-        written in JavaScript using the <code>canvas</code>-tag. It can simulate the largest known patterns, including the
-        <a href="?pattern=caterpillar" id="caterpillar_link" title="Click to load" className="link">Caterpillar</a> (7.6MB, 11m cells) and
-        <a href="?pattern=gemini" id="gemini_link" title="Click to load" className="link">Gemini</a> (1.6MB, 846k cells).
-        
-        
-        <div id="about_main" style={{display: 'none'}}>
-            If you encounter any bugs or have feedback, you can contact me at <a title="Click to show Email" href="?pattern=email">this email</a>.
-            
-            Click on the pattern name on the bottom left to get some informations about the current pattern.
-            
-            
-            <a href="examples" target="_blank">List of all patterns</a> &mdash;
-            <a href="https://github.com/copy/life" target="_blank">Source code on Github</a> &mdash;
-            <a href="https://github.com/copy/life/issues" target="_blank">Report an issue</a>
-            
-            
-            <b>Controls:</b>
-            <pre>
-        Left mouse          - Move around
-        Right mouse         - Create / Delete cells
-        Mouse wheel         - Zoom
-
-        Arrow keys, HJKL    - Move around
-        +, -                - Zoom
-        Space               - One generation forward
-        Tab                 - Many generations forward
-        Enter               - Run/Pause
-        Backspace           - Rewind
-        ]                   - Faster
-        [                   - Slower
-        Escape              - Close Popups
-            </pre>
-        </div>
-        
-        
-        
-        <span className="button2" id="about_close" style={{display: 'none'}}>Ok</span>
-    </div>
     <div id="import_dialog" style={{display: 'none'}}>
         <h2>Import Pattern</h2>
         Supports RLE, Life 1.06, Plaintext

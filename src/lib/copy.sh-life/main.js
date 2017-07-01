@@ -571,11 +571,6 @@ export default function Main()
                 show_alert(current_pattern);
             };
 
-            $("about_button").onclick = function()
-            {
-                show_overlay("about");
-            };
-
             //$("more_button").onclick = show_pattern_chooser;
             $("pattern_button").onclick = show_pattern_chooser;
 
