@@ -623,21 +623,6 @@ export default function Main()
         update();
     }
 
-    function step(is_single)
-    {
-        var time = Date.now();
-
-        if(life.generation === 0)
-        {
-            life.save_rewind_state();
-        }
-
-        life.next_generation(is_single);
-        drawer.redraw(life.root);
-
-        update_hud(1000 / (Date.now() - time));
-    }
-
     /**
      * @param {number=} fps
      */
