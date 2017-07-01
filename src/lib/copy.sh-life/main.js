@@ -21,12 +21,6 @@ export default function Main()
 
     var
 
-        /**
-         * which pattern file is currently loaded
-         * @type {{title: String, urls, comment, id, source_url}}
-         * */
-        current_pattern,
-
         // functions which is called when the pattern stops running
         /** @type {function()|undefined} */
         onstop,
@@ -42,10 +36,6 @@ export default function Main()
 
         /** @type {number} */
         max_fps,
-
-        // has the pattern list been loaded
-        /** @type {boolean} */
-        patterns_loaded = false,
 
         /**
          * path to the folder with all patterns
@@ -569,14 +559,6 @@ export default function Main()
             {
                 pattern_source_url = rle_link(pattern_id);
             }
-
-            current_pattern = {
-                title : result.title,
-                comment : result.comment,
-                urls : result.urls,
-                id : pattern_id,
-                source_url: pattern_source_url,
-            };
         });
     }
 
