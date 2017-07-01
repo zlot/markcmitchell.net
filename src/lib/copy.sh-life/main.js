@@ -91,7 +91,6 @@ export default function Main()
 
         function load_pattern(patternToLoad)
         {
-            show_overlay("loading_popup");
             http_get(
                 rle_link(patternToLoad),
                 function(text) {
@@ -449,8 +448,6 @@ export default function Main()
 
             $("settings_button").onclick = function()
             {
-                show_overlay("settings_dialog");
-
                 $("rule").value = formats.rule2str(life.rule_s, life.rule_b);
                 $("max_fps").value = max_fps;
                 $("gen_step").value = Math.pow(2, life.step);
@@ -642,30 +639,6 @@ export default function Main()
         drawer.redraw(life.root);
 
         update_hud(1000 / (Date.now() - time));
-    }
-
-    function show_overlay(overlay_id)
-    {
-        show_element($("overlay"));
-
-        // allow scroll bars when overlay is visible
-        document.body.style.overflow = "auto";
-
-        var overlays = $("overlay").children;
-
-        for(var i = 0; i < overlays.length; i++)
-        {
-            var child = overlays[i];
-
-            if(child.id === overlay_id)
-            {
-                show_element(child);
-            }
-            else
-            {
-                hide_element(child);
-            }
-        }
     }
 
     /**

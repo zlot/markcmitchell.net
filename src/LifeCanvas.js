@@ -32,7 +32,8 @@ const LifeCanvas = () => (
     <div id="label_pop" title="Population">0</div>
     <div id="label_step" title="Generation per Step">1</div>
 </div>
-<div id="overlay">
+
+<div>
 
     <div id="settings_dialog" style={{display: 'none'}}>
         <h2>Settings</h2>
