@@ -702,7 +702,7 @@ export default function Main()
      */
     function do_field_draw(e)
     {
-        var coords = drawer.pixel2cell(e.clientX, e.clientY);
+        const coords = drawer.pixel2cell(e.layerX, e.layerY);
         const DRAW_CELL_SIZE = 12;
 
         for(let y = coords.y-DRAW_CELL_SIZE/2; y<coords.y+DRAW_CELL_SIZE/2; y++) {
