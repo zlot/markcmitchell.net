@@ -236,14 +236,10 @@ export default function Main()
                 return false;
             };
 
-            drawer.canvas.onmousewheel = function(e)
-            {
+            drawer.canvas.onwheel = function(e) {
                 e.preventDefault();
-                drawer.zoom((e.wheelDelta || -e.detail) < 0, e.clientX, e.clientY);
-
-                update_hud();
+                drawer.move(-e.deltaX, -e.deltaY);
                 lazy_redraw(life.root);
-                return false;
             }
 
             drawer.canvas.addEventListener("DOMMouseScroll", drawer.canvas.onmousewheel, false);
