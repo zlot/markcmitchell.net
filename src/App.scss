@@ -1,24 +1,24 @@
 body {
   height: 100%;
   width: 100%;
-}
-.App {
-  text-align: center;
+  font-family: sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Nav {
+  position: fixed;
+  bottom: 0;
+  padding: 0.5rem;
+  width: 80%;
+  background-color: white;
+  color: blue;
+  left: 50%;
+  transform: translateX(-50%);
+  ul {
+    margin: 0.5rem 0;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin-left: 1.5rem;
+    }
+  }
 }

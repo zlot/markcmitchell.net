@@ -15,10 +15,16 @@ class App extends Component {
     return (
       <div className="App">
         <LifeCanvas />
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className='Nav'>
+          <ul>
+            <li>Works</li>
+            <li>Experimental</li>
+            <li>Twitter</li>
+            <li>LinkedIn</li>
+            <li>Email</li>
+          </ul>
         </div>
+
       </div>
     );
   }
