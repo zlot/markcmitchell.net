@@ -75,8 +75,9 @@ export default function Main()
         }
     }
 
+    setup.call(this)
     // setup
-    (function()
+    function setup()
     {
         if(loaded)
         {
@@ -272,9 +273,9 @@ export default function Main()
                     return false;
                 }
                 else if(chr === 13)
-                {
+                {   
                     // enter
-                    $("run_button").onclick();
+                    this.userRun()
                     return false;
                 }
                 else if(chr === 189 || chr === 173 || chr === 109)
@@ -321,7 +322,7 @@ export default function Main()
                 }
 
                 return true;
-            };
+            }.bind(this);
 
             $("faster_button").onclick = function()
             {
@@ -434,7 +435,7 @@ export default function Main()
             };
 
         }
-    })()
+    }
 
 
     function rle_link(id)
