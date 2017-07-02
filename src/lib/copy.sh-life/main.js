@@ -2,9 +2,9 @@ import LifeUniverse from './life';
 import LifeCanvasDrawer from './draw';
 import formats from './formats';
 
-function debug(msg) {
+function debug() {
     if(process.env.NODE_ENV === 'development') {
-        console.log(msg)
+        console.log(...arguments)
     }
 }
 
