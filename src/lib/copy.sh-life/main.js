@@ -13,7 +13,7 @@ const DEFAULT_FPS = 20;
 const BACKGROUND_COLOR = '#0b00b5';
 const CELL_COLOR = '#ff0200';
 const MAX_ZOOM_IN_LEVEL = 8;
-const MAX_ZOOM_OUT_LEVEL = 0.25;
+const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
 
 export default function Main()
