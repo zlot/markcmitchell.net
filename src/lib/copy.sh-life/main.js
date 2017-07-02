@@ -148,30 +148,14 @@ export default function Main()
             {
                 if(e.which === 3 || e.which === 2)
                 {
-                    var coords = drawer.pixel2cell(e.clientX, e.clientY);
-
-                    mouse_set = !life.get_bit(coords.x, coords.y);
-
-                    window.addEventListener("mousemove", do_field_draw, true);
-                    do_field_draw(e);
                 }
                 else if(e.which === 1)
                 {
-                    last_mouse_x = e.clientX;
-                    last_mouse_y = e.clientY;
-                    //console.log("start", e.clientX, e.clientY);
+                    var coords = drawer.pixel2cell(e.clientX, e.clientY);
+                    mouse_set = !life.get_bit(coords.x, coords.y); // used in do_field_draw
 
-                    window.addEventListener("mousemove", do_field_move, true);
-
-                    (function redraw()
-                    {
-                        if(last_mouse_x !== null)
-                        {
-                            requestAnimationFrame(redraw);
-                        }
-
-                        lazy_redraw(life.root);
-                    })();
+                    window.addEventListener("mousemove", do_field_draw, true);
+                    do_field_draw(e); // do it on first mousedown. listener takes care of holding down
                 }
 
                 return false;
@@ -719,17 +703,19 @@ export default function Main()
     function do_field_draw(e)
     {
         var coords = drawer.pixel2cell(e.clientX, e.clientY);
+        const DRAW_CELL_SIZE = 15;
 
-        // don't draw the same pixel twice
-        if(coords.x !== last_mouse_x || coords.y !== last_mouse_y)
-        {
-            life.set_bit(coords.x, coords.y, mouse_set);
-            update_hud();
-
-            drawer.draw_cell(coords.x, coords.y, mouse_set);
-            last_mouse_x = coords.x;
-            last_mouse_y = coords.y;
+        for(let y = coords.y-DRAW_CELL_SIZE/2; y<coords.y+DRAW_CELL_SIZE/2; y++) {
+            for(let x = coords.x-DRAW_CELL_SIZE/2; x<coords.x+DRAW_CELL_SIZE/2; x++) {
+                // don't draw the same pixel twice
+                if(x !== last_mouse_x || y !== last_mouse_y) {
+                    life.set_bit(x, y, mouse_set);
+                    drawer.draw_cell(x, y, mouse_set);
+                }
+            }
         }
+        last_mouse_x = coords.x;
+        last_mouse_y = coords.y;        
     }
 
     function set_query(filename)
