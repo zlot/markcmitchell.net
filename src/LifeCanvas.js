@@ -17,14 +17,11 @@ const LifeCanvas = () => (
         </tr>
         <tr>
             <td title="Fit pattern"><div id="initial_pos_button">F</div></td>
-            <td title="Zoom in"><div id="zoomin_button">+</div></td>
-            <td title="Zoom out"><div id="zoomout_button">&ndash;</div></td>
         </tr>
       </tbody>
     </table>
 </div>
 <div id="statusbar" style={{display: 'none'}}>
-    <div id="label_zoom" title="Zoom"></div>
     <div id="label_mou" title="Mouse Coordinates">0, 0</div>
     <div id="label_fps" title="Frames per Second">0</div>
     <div id="label_gen" title="Generation">0</div>

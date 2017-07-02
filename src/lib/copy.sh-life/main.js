@@ -13,7 +13,8 @@ const DEFAULT_FPS = 20;
 
 const BACKGROUND_COLOR = '#0b00b5';
 const CELL_COLOR = '#ff0200';
-
+const MAX_ZOOM_IN_LEVEL = 8;
+const MAX_ZOOM_OUT_LEVEL = 0.25;
 
 export default function Main()
 {
@@ -73,6 +74,28 @@ export default function Main()
             run();
             return true;
         }
+    }
+
+    this.userZoomIn = () => {
+        if(isAtMaxZoomIn()) {
+            return;
+        }
+        drawer.zoom_centered(false);
+        lazy_redraw(life.root);
+    }
+    this.userZoomOut = () => {
+        if(isAtMaxZoomOut()) {
+            return;
+        }        
+        drawer.zoom_centered(true);
+        lazy_redraw(life.root);
+    }
+
+    function isAtMaxZoomIn() {
+        return drawer.cell_width >= MAX_ZOOM_IN_LEVEL ? true : false;
+    }
+    function isAtMaxZoomOut() {
+        return drawer.cell_width <= MAX_ZOOM_OUT_LEVEL ? true : false;
     }
 
     setup.call(this)
@@ -136,9 +159,10 @@ export default function Main()
 
             drawer.canvas.ondblclick = function(e)
             {
+                if(isAtMaxZoomIn()) {
+                    return;
+                }
                 drawer.zoom(false, e.clientX, e.clientY);
-
-                update_hud();
                 lazy_redraw(life.root);
                 return false;
             };
@@ -344,20 +368,6 @@ export default function Main()
             $("normalspeed_button").onclick = function()
             {
                 life.set_step(0);
-            };
-
-            $("zoomin_button").onclick = function()
-            {
-                drawer.zoom_centered(false);
-                update_hud();
-                lazy_redraw(life.root);
-            };
-
-            $("zoomout_button").onclick = function()
-            {
-                drawer.zoom_centered(true);
-                update_hud();
-                lazy_redraw(life.root);
             };
 
             $("initial_pos_button").onclick = function()

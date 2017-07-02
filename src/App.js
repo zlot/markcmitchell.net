@@ -28,6 +28,12 @@ class App extends Component {
     const isRunning = this.main.userRun()
     this.setState({isRunning})
   }
+  zoomIn = () => {
+    this.main.userZoomIn()
+  }
+  zoomOut = () => {
+    this.main.userZoomOut()
+  }
 
   render() {
     return (
@@ -35,6 +41,8 @@ class App extends Component {
         <LifeCanvas />
         <div className='Button-container'>
           <Button onClick={this.onButtonClick} text={this.state.isRunning ? 'Stop' : 'Run'} />
+          <Button onClick={this.zoomIn} text={'Zoom +'} />
+          <Button onClick={this.zoomOut} text={'Zoom -'} />
         </div>
         <div className='Nav'>
           <ul>
