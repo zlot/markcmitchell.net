@@ -236,7 +236,6 @@ export default function Main()
             {
                 var coords = drawer.pixel2cell(e.clientX, e.clientY);
                 // debug(`mouse: ${coords.x}, ${coords.y}`);
-                fix_width($("label_mou"));
             }
 
             drawer.canvas.oncontextmenu = function(e)
@@ -488,7 +487,6 @@ export default function Main()
         max_fps = DEFAULT_FPS;
 
         debug("zoom is 1:2");
-        fix_width($("label_mou"));
 
         drawer.center_view();
     }
@@ -618,8 +616,6 @@ export default function Main()
      */
     function update_hud(fps)
     {
-        fix_width($("label_gen"));
-        fix_width($("label_pop"));
 
         if(drawer.cell_width >= 1)
         {
@@ -637,22 +633,6 @@ export default function Main()
         {
             drawer.redraw(node);
         }
-    }
-
-    /**
-     * fixes the width of an element to its current size
-     */
-    function fix_width(element)
-    {
-        element.style.padding = "0";
-        element.style.width = "";
-
-        if(!element.last_width || element.last_width < element.offsetWidth) {
-            element.last_width = element.offsetWidth;
-        }
-        element.style.padding = "";
-
-        element.style.width = element.last_width + "px";
     }
 
     /**
