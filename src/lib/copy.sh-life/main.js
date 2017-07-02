@@ -227,7 +227,7 @@ export default function Main()
             window.onmousemove = function(e)
             {
                 var coords = drawer.pixel2cell(e.clientX, e.clientY);
-                debug(`mouse: ${coords.x}, ${coords.y}`);
+                // debug(`mouse: ${coords.x}, ${coords.y}`);
                 fix_width($("label_mou"));
             }
 
