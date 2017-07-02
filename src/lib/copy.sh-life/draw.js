@@ -287,15 +287,30 @@ export default function LifeCanvasDrawer()
 
         if(isFinite(width) && isFinite(height))
         {
+
             relative_size = Math.min(
                 16, // maximum cell size
                 canvas_width / width, // relative width
-                canvas_height / height // relative height
             );
+
+            // hacking for mobile view
+            // don't go any smaller than 0.5
+            relative_size = Math.max(relative_size, 0.5)
             zoom_to(relative_size);
 
+
             x = Math.round(canvas_width / 2 - (bounds.left + width / 2) * drawer.cell_width);
-            y = Math.round(canvas_height / 2 - (bounds.top + height / 2) * drawer.cell_width);
+            // y = Math.round(canvas_height / 2 - (bounds.top + height / 2) * drawer.cell_width) + canvas_height/2;
+
+            // hacking for mobile view
+            // to place content correctly into viewport
+            if(relative_size >= 1) {
+                y= 850 
+            }
+            if(relative_size < 1) {
+                x = 300
+                y = 400
+            }
         }
         else
         {
