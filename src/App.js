@@ -24,7 +24,7 @@ class App extends Component {
     this.main = new Main()
   }
 
-  onButtonClick = () => {
+  run = () => {
     const isRunning = this.main.userRun()
     this.setState({isRunning})
   }
@@ -40,7 +40,7 @@ class App extends Component {
       <div className="App">
         <LifeCanvas />
         <div className='Button-container'>
-          <Button onClick={this.onButtonClick} text={this.state.isRunning ? 'Stop' : 'Run'} />
+          <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
           <Button onClick={this.zoomIn} text={'Zoom +'} />
           <Button onClick={this.zoomOut} text={'Zoom -'} />
         </div>
