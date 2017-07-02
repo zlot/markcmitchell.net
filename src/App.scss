@@ -22,3 +22,14 @@ body {
     }
   }
 }
+
+.Button-container {
+  position: fixed;
+  right: 0;
+  top: 100px;
+  text-align: right;
+}
+
+.Button {
+  display: block;
+}

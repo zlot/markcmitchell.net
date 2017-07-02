@@ -64,6 +64,17 @@ export default function Main()
         setTimeout;
 
 
+    this.userRun = () => {
+        if(running) {
+            stop();
+            return false;
+        }
+        else {
+            run();
+            return true;
+        }
+    }
+
     // setup
     (function()
     {
@@ -105,18 +116,6 @@ export default function Main()
                 drawer.set_size(window.innerWidth, document.body.offsetHeight);
                 requestAnimationFrame(lazy_redraw.bind(0, life.root));
             }, 500);
-
-            $("run_button").onclick = function()
-            {
-                if(running)
-                {
-                    stop();
-                }
-                else
-                {
-                    run();
-                }
-            };
 
             $("rewind_button").onclick = function()
             {
