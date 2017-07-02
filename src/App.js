@@ -38,11 +38,12 @@ class App extends Component {
         </div>
         <div className='Nav'>
           <ul>
-            <li>Works</li>
-            <li>Experimental</li>
-            <li>Twitter</li>
-            <li>LinkedIn</li>
-            <li>Email</li>
+            <li><a href='#'>Works</a></li>
+            <li><a href='#'>Experimental</a></li>
+            {/*<li><a href='#'>Contact</a></li>*/}
+            <li><a href='#'>Twitter</a></li>
+            <li><a href='#'>LinkedIn</a></li>
+            <li><a href='#'>Email</a></li>
           </ul>
         </div>
 

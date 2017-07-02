@@ -1,7 +1,17 @@
+$red: #ff0200;
+
 body {
   height: 100%;
   width: 100%;
   font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+  &:hover {
+    color: $red;
+  }
 }
 
 .Nav {
@@ -10,7 +20,6 @@ body {
   padding: 0.5rem;
   width: 80%;
   background-color: white;
-  color: blue;
   left: 50%;
   transform: translateX(-50%);
   ul {
@@ -18,7 +27,7 @@ body {
     padding: 0;
     li {
       display: inline-block;
-      margin-left: 1.5rem;
+      margin-left: 1.75rem;
     }
   }
 }
