@@ -110,7 +110,8 @@ export default function Main()
 
         loaded = true;
 
-        if(!drawer.init(document.body))
+        // places canvas into DOM
+        if(!drawer.init(document.getElementsByClassName('LifeCanvas')[0]))
         {
             alert("Canvas-less browsers are not supported. I'm sorry for that.");
             return;
