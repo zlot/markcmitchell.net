@@ -703,7 +703,7 @@ export default function Main()
     function do_field_draw(e)
     {
         var coords = drawer.pixel2cell(e.clientX, e.clientY);
-        const DRAW_CELL_SIZE = 15;
+        const DRAW_CELL_SIZE = 12;
 
         for(let y = coords.y-DRAW_CELL_SIZE/2; y<coords.y+DRAW_CELL_SIZE/2; y++) {
             for(let x = coords.x-DRAW_CELL_SIZE/2; x<coords.x+DRAW_CELL_SIZE/2; x++) {
