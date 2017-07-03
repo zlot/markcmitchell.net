@@ -118,7 +118,7 @@ export default function Main()
         }
 
         init_ui.call(this);
-        drawer.set_size(window.innerWidth, window.innerHeight);
+        drawer.set_size(document.body.clientWidth, document.body.clientHeight);
 
         reset_settings();
 
@@ -138,7 +138,7 @@ export default function Main()
         {
             window.onresize = debounce(function()
             {
-                drawer.set_size(window.innerWidth, document.body.offsetHeight);
+                drawer.set_size(document.body.clientWidth, document.body.clientHeight);
                 requestAnimationFrame(lazy_redraw.bind(0, life.root));
             }, 500);
 
