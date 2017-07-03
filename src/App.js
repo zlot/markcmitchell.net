@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './App.scss'
-
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
 import {
-  BrowserRouter as Router,
+  Router,
   Route,
   Link
 } from 'react-router-dom'
+import createHistory from 'history/createBrowserHistory'
+
 
 const Button = ({
   onClick,
@@ -24,9 +25,22 @@ class App extends Component {
 
   constructor(props) {
     super(props)
+
+    this.history = createHistory()
+    // Get the current location.
+    const location = this.history.location    
     this.state = {
       isRunning: false
     }
+    // Listen for changes to the current location.
+    const unlisten = this.history.listen((location, action) => {
+      // location is an object like window.location
+      if(location.pathname !== '/') {
+        // call stop
+        this.main.userStop()
+        this.setState({isRunning: false})
+      }
+    })
   }
   componentDidMount = () => {
     this.main = new Main()
@@ -47,10 +61,10 @@ class App extends Component {
     return (
       <div className="App">
 
-      <Router>
+      <Router history={this.history}>
         <div>
-
-          <Route exact path="/" component={LifeCanvas} />
+          <LifeCanvas />
+          <Route exact path='/'/>
           <Route path="/experimental" component={Experimental}/>
 
           <div className='Button-container'>
