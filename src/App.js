@@ -18,8 +18,11 @@ const Button = ({
 )
 
 const Experimental = () => (
-  <h1>Coming soon ... 🏝</h1>
+  <div className='Experimental'>
+    <h1>Coming soon ... 🏝</h1>
+  </div>
 )
+
 
 class App extends Component {
 
