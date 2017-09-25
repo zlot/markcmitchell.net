@@ -2,6 +2,9 @@ import React from 'react'
 
 export default class Experimental extends React.Component {
   render = () => (
-    <h1>Coming soon ... 🏝</h1>
+    <div>
+      <h1>Experimental</h1>
+      <h2>Coming soon 🏝</h2>
+    </div>
   )
 }

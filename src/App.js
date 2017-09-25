@@ -62,8 +62,8 @@ class App extends Component {
       <Router history={this.history}>
         <div>
           <LifeCanvas />
-          <Route exact path='/'/>
-          <Route path="/experimental" component={ExperimentalWithSmoothScroll}/>
+          <Route exact path='/' />
+          <Route path='/experimental' component={ExperimentalWithSmoothScroll} />
 
           <div className='Button-container'>
             <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
