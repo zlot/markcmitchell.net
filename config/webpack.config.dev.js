@@ -124,6 +124,7 @@ module.exports = {
           },
         ],
         include: paths.appSrc,
+        exclude: paths.libSrc,
       },
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
