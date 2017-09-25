@@ -8,7 +8,7 @@ import {
   Link
 } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
-
+import smoothScroll from 'smoothscroll'
 
 const Button = ({
   onClick,
@@ -17,11 +17,18 @@ const Button = ({
   <button className='Button' onClick={onClick}>{text}</button>
 )
 
-const Experimental = () => (
-  <div className='Experimental'>
-    <h1>Coming soon ... 🏝</h1>
+class Experimental extends Component {
+  componentDidMount = () => {
+    smoothScroll(this.el, 1500)
+  }
+
+  render = () => (
+    <div className='Experimental' ref={(el => {this.el = el})}>
+      <h1>Coming soon ... 🏝</h1>
   </div>
-)
+  )
+}
+
 
 
 class App extends Component {
