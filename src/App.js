@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import './App.scss'
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
+import {ExperimentalWithSmoothScroll} from './pages'
 import {
   Router,
   Route,
   Link
 } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
-import smoothScroll from 'smoothscroll'
 
 const Button = ({
   onClick,
@@ -17,25 +17,9 @@ const Button = ({
   <button className='Button' onClick={onClick}>{text}</button>
 )
 
-const Experimental2 = () => (
-  <h1>Coming soon ... 🏝</h1>
-)
-
-const Experimental2WithSmoothScroll = withSmoothScroll(Experimental2, 'Experimental2')
 
 
-function withSmoothScroll(WrappedComponent, componentName) {
-  return class extends Component {
-    componentDidMount = () => {
-      smoothScroll(this.el, 1500)
-    }
-    render = () => (
-      <div className={`page ${componentName}`} ref={(el => {this.el = el})}>
-        <WrappedComponent />
-      </div>
-    )
-  }
-}
+
 
 
 class App extends Component {
@@ -81,7 +65,7 @@ class App extends Component {
         <div>
           <LifeCanvas />
           <Route exact path='/'/>
-          <Route path="/experimental" component={Experimental2WithSmoothScroll}/>
+          <Route path="/experimental" component={ExperimentalWithSmoothScroll}/>
 
           <div className='Button-container'>
             <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
