@@ -2,9 +2,12 @@ import React, {Component} from 'react'
 import smoothScroll from 'smoothscroll'
 
 export default function withSmoothScroll(WrappedComponent, componentName) {
+  
+  const SCROLL_SPEED = 1500
+
   return class extends Component {
     componentDidMount = () => {
-      smoothScroll(this.el, 1500)
+      smoothScroll(this.el, SCROLL_SPEED)
     }
     render = () => (
       <div className={`page ${componentName}`} ref={(el => {this.el = el})}>
