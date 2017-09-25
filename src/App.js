@@ -37,7 +37,6 @@ class App extends Component {
     }
     // Listen for changes to the current location.
     const unlisten = this.history.listen((location, action) => {
-      // location is an object like window.location
       if(location.pathname !== '/') {
         // call stop
         this.main.userStop()
