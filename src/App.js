@@ -28,8 +28,6 @@ class App extends Component {
     super(props)
 
     this.history = createHistory()
-    // Get the current location.
-    const location = this.history.location    
     this.state = {
       isRunning: false
     }
