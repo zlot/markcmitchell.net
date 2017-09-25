@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import './App.scss'
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
-import {ExperimentalWithSmoothScroll} from './pages'
+import {
+  ExperimentalWithSmoothScroll,
+  WorksWithSmoothScroll
+} from './pages'
+
 import {
   Router,
   Route,
@@ -63,6 +67,7 @@ class App extends Component {
         <div>
           <LifeCanvas />
           <Route exact path='/' />
+          <Route path='/works' component={WorksWithSmoothScroll} />
           <Route path='/experimental' component={ExperimentalWithSmoothScroll} />
 
           <div className='Button-container'>
@@ -72,7 +77,7 @@ class App extends Component {
           </div>
           <div className='Nav'>
             <ul>
-              <li><Link to='/'>Works</Link></li>
+              <li><Link to='/works'>Works</Link></li>
               <li><Link to='/experimental'>Experimental</Link></li>
               {/*<li><Link to='/'>Contact</Link></li>*/}
               <li><Link to='/'>Twitter</Link></li>
