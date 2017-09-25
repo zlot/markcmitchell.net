@@ -22,10 +22,17 @@ a {
 }
 
 .LifeCanvas {
-  position: absolute;
-  z-index: -1;
+  position: relative;
   top: 0;
   left: 0;
+  height: 100vh;
+  overflow: hidden;
+
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
 
 .Nav {
