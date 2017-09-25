@@ -17,18 +17,25 @@ const Button = ({
   <button className='Button' onClick={onClick}>{text}</button>
 )
 
-class Experimental extends Component {
-  componentDidMount = () => {
-    smoothScroll(this.el, 1500)
+const Experimental2 = () => (
+  <h1>Coming soon ... 🏝</h1>
+)
+
+const Experimental2WithSmoothScroll = withSmoothScroll(Experimental2, 'Experimental2')
+
+
+function withSmoothScroll(WrappedComponent, componentName) {
+  return class extends Component {
+    componentDidMount = () => {
+      smoothScroll(this.el, 1500)
+    }
+    render = () => (
+      <div className={`page ${componentName}`} ref={(el => {this.el = el})}>
+        <WrappedComponent />
+      </div>
+    )
   }
-
-  render = () => (
-    <div className='Experimental' ref={(el => {this.el = el})}>
-      <h1>Coming soon ... 🏝</h1>
-  </div>
-  )
 }
-
 
 
 class App extends Component {
@@ -74,7 +81,7 @@ class App extends Component {
         <div>
           <LifeCanvas />
           <Route exact path='/'/>
-          <Route path="/experimental" component={Experimental}/>
+          <Route path="/experimental" component={Experimental2WithSmoothScroll}/>
 
           <div className='Button-container'>
             <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
