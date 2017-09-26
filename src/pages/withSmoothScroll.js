@@ -3,7 +3,7 @@ import smoothScroll from 'smoothscroll'
 
 export default function withSmoothScroll(WrappedComponent, componentName) {
   
-  const SCROLL_SPEED = 1500
+  const SCROLL_SPEED = 1150
 
   return class extends React.Component {
     componentDidMount = () => {
