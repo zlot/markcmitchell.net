@@ -23,9 +23,6 @@ const Button = ({
 
 
 
-
-
-
 class App extends Component {
 
   constructor(props) {
@@ -44,6 +41,7 @@ class App extends Component {
       }
     })
   }
+
   componentDidMount = () => {
     this.main = new Main()
   }
