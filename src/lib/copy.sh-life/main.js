@@ -76,6 +76,10 @@ export default function Main()
         }
     }
 
+    this.userStop = () => {
+        stop();
+    }
+
     this.userZoomIn = () => {
         if(isAtMaxZoomIn()) {
             return;
