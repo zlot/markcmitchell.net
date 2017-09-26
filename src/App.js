@@ -65,8 +65,9 @@ class App extends Component {
         <div>
           <LifeCanvas />
           <Route exact path='/' />
-          <Route path='/works' component={WorksWithSmoothScroll} />
-          <Route path='/experimental' component={ExperimentalWithSmoothScroll} />
+
+          <Route path='/works' render={() => (<WorksWithSmoothScroll scrollToPosition={true} />)} />
+          <Route path='/experimental' render={() => (<ExperimentalWithSmoothScroll scrollToPosition={true} />)} />
 
           <div className='Button-container'>
             <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
