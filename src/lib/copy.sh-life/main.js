@@ -454,7 +454,7 @@ export default function Main()
 
     function rle_link(id)
     {
-        return window.location.protocol + "//" + window.location.host + window.location.pathname + pattern_path + id + ".rle";
+        return window.location.protocol + "//" + window.location.host + "/" + pattern_path + id + ".rle";
     }
 
     /**
