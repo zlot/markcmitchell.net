@@ -21,19 +21,26 @@ a {
   height: 100vh;
 }
 
-.LifeCanvas {
+.canvas-container {
   position: relative;
-  top: 0;
-  left: 0;
-  height: 100vh;
   overflow: hidden;
-
-  canvas {
-    position: absolute;
-    left: 0;
+  
+  .LifeCanvas {
+    position: relative;
     top: 0;
-  }
+    left: 0;
+    height: 100vh;
+    overflow: hidden;
+  
+    canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }  
 }
+
+
 
 .Nav {
   position: fixed;

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.scss'
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
+import Controls from './Controls'
 import {
   ExperimentalWithSmoothScroll,
   WorksWithSmoothScroll
@@ -20,7 +21,6 @@ const Button = ({
 }) => (
   <button className='Button' onClick={onClick}>{text}</button>
 )
-
 
 
 class App extends Component {
@@ -63,17 +63,23 @@ class App extends Component {
 
       <Router history={this.history}>
         <div>
-          <LifeCanvas />
+          <div className='canvas-container'>
+            <LifeCanvas />
+            <Controls run={this.run} runText={this.state.isRunning ? 'Stop' : 'Run'} zoomIn={this.zoomIn} zoomOut={this.zoomOut} />
+            {/* Note:: add a recenter type of button!! */}
+          </div>
+          
           <Route exact path='/' />
 
           <Route path='/works' render={() => (<WorksWithSmoothScroll scrollToPosition={true} />)} />
           <Route path='/experimental' render={() => (<ExperimentalWithSmoothScroll scrollToPosition={true} />)} />
 
-          <div className='Button-container'>
+          {/* <div className='Button-container'>
             <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
             <Button onClick={this.zoomIn} text={'Zoom +'} />
             <Button onClick={this.zoomOut} text={'Zoom -'} />
-          </div>
+          </div> */}
+
           <div className='Nav'>
             <ul>
               <li><Link to='/works'>Works</Link></li>

@@ -1,0 +1,39 @@
+#circle {
+  svg { 
+    position: absolute; 
+    display: block;
+    right: 20px; 
+    bottom: 20px; 
+    animation-name: rotate;
+    animation-duration: 115s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    user-select: none;
+  }
+  text {
+    font-family: 'Helvetica Neue', Arial; 
+    font-size: 28px; 
+    font-weight: bold; 
+    
+    /*font-variant: small-caps; 
+    text-transform: lowercase;
+    */
+  }
+  a {
+    cursor: pointer;
+    fill: white;
+    &:hover {
+      transition: 0.8s all ease;
+      text-decoration: underline;
+    }
+  }
+}
+
+
+@keyframes rotate {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+
+
