@@ -10,13 +10,7 @@ export default function withSmoothScroll(WrappedComponent, componentName) {
       // Will scroll to position on mount
       smoothScroll(this.el, SCROLL_SPEED)  
     }
-    componentWillUpdate = () => {
-      const {scrollToPosition} = this.props
-      // Will scroll to position if passed scrollToPostion prop
-      if(scrollToPosition) {
-        smoothScroll(this.el, SCROLL_SPEED)
-      }
-    }
+
     render = () => (
       <div className={`page ${componentName}`} ref={(el => {this.el = el})}>
         <WrappedComponent />

@@ -64,8 +64,8 @@ class App extends Component {
           
           <Route exact path='/' />
 
-          <Route path='/works' render={() => (<WorksWithSmoothScroll scrollToPosition={true} />)} />
-          <Route path='/experimental' render={() => (<ExperimentalWithSmoothScroll scrollToPosition={true} />)} />
+          <Route path='/works' component={WorksWithSmoothScroll} />
+          <Route path='/experimental' component={ExperimentalWithSmoothScroll} />
 
 
           <div className='Nav'>
