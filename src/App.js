@@ -15,13 +15,6 @@ import {
 } from 'react-router-dom'
 import createHistory from 'history/createBrowserHistory'
 
-const Button = ({
-  onClick,
-  text
-}) => (
-  <button className='Button' onClick={onClick}>{text}</button>
-)
-
 
 class App extends Component {
 
@@ -65,7 +58,7 @@ class App extends Component {
         <div>
           <div className='canvas-container'>
             <LifeCanvas />
-            <Controls run={this.run} runText={this.state.isRunning ? 'Stop' : 'Run'} zoomIn={this.zoomIn} zoomOut={this.zoomOut} />
+            <Controls run={this.run} runText={this.state.isRunning ? 'Stop😳' : 'Run🔥'} zoomIn={this.zoomIn} zoomOut={this.zoomOut} />
             {/* Note:: add a recenter type of button!! */}
           </div>
           
@@ -74,11 +67,6 @@ class App extends Component {
           <Route path='/works' render={() => (<WorksWithSmoothScroll scrollToPosition={true} />)} />
           <Route path='/experimental' render={() => (<ExperimentalWithSmoothScroll scrollToPosition={true} />)} />
 
-          {/* <div className='Button-container'>
-            <Button onClick={this.run} text={this.state.isRunning ? 'Stop' : 'Run'} />
-            <Button onClick={this.zoomIn} text={'Zoom +'} />
-            <Button onClick={this.zoomOut} text={'Zoom -'} />
-          </div> */}
 
           <div className='Nav'>
             <ul>

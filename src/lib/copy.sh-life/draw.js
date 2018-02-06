@@ -73,7 +73,6 @@ export default function LifeCanvasDrawer()
         {
             canvas_width = canvas.width = width;
             canvas_height = canvas.height = height;
-
             image_data = context.createImageData(width, height);
             image_data_data = new Int32Array(image_data.data.buffer);
 

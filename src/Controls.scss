@@ -12,18 +12,18 @@
   }
   text {
     font-family: 'Helvetica Neue', Arial; 
-    font-size: 28px; 
+    font-size: 27px; 
     font-weight: bold; 
     
-    /*font-variant: small-caps; 
-    text-transform: lowercase;
-    */
+    // font-variant: small-caps; 
+    // text-transform: lowercase;
   }
   a {
     cursor: pointer;
     fill: white;
+    display: block;
+    padding: 40px;
     &:hover {
-      transition: 0.8s all ease;
       text-decoration: underline;
     }
   }
