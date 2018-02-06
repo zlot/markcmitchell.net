@@ -86,6 +86,10 @@ export default function Main()
         }
         drawer.zoom_centered(false);
         lazy_redraw(life.root);
+
+        function isAtMaxZoomIn() {
+            return drawer.cell_width >= MAX_ZOOM_IN_LEVEL ? true : false;
+        }
     }
     this.userZoomOut = () => {
         if(isAtMaxZoomOut()) {
@@ -93,13 +97,10 @@ export default function Main()
         }        
         drawer.zoom_centered(true);
         lazy_redraw(life.root);
-    }
 
-    function isAtMaxZoomIn() {
-        return drawer.cell_width >= MAX_ZOOM_IN_LEVEL ? true : false;
-    }
-    function isAtMaxZoomOut() {
-        return drawer.cell_width <= MAX_ZOOM_OUT_LEVEL ? true : false;
+        function isAtMaxZoomOut() {
+            return drawer.cell_width <= MAX_ZOOM_OUT_LEVEL ? true : false;
+        }
     }
 
     setup.call(this)
