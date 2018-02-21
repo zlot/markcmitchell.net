@@ -2,7 +2,8 @@ import React from 'react'
 
 
 const LifeCanvas = () => (
-<div className='LifeCanvas'>
+<div className='LifeCanvas' onMouseDown={onMouseDown}>
+    <canvas id='main-canvas'></canvas>
     <div id="toolbar" style={{display: 'none'}}>
 
         <div className="button" id="settings_button">Settings</div>

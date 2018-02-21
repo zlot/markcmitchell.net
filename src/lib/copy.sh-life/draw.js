@@ -52,7 +52,7 @@ export default function LifeCanvasDrawer()
 
     function init(dom_parent)
     {
-        canvas = document.createElement("canvas");
+        canvas = document.getElementById('main-canvas');
 
         if(!canvas.getContext) {
             return false;
@@ -61,9 +61,7 @@ export default function LifeCanvasDrawer()
         drawer.canvas = canvas;
 
         context = canvas.getContext("2d");
-
-        dom_parent.appendChild(canvas);
-
+                
         return true;
     }
 
