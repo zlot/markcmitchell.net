@@ -120,7 +120,15 @@ LifeUniverse.prototype.restore_rewind_state = function()
 
 LifeUniverse.prototype.eval_mask = function(bitmask)
 {
-    var rule = (bitmask & 32) ? this.rule_s : this.rule_b;
+    var rule;
+    rule = (bitmask & 32) ? this.rule_s : this.rule_b;
+    // Randomise the rule occasionally, which allows for a touch more growth.
+    // Note, running Math.random() here with a check might be a tad inefficient ...
+    // if(Math.random() < 0.03) {
+    //     rule = (bitmask & 32) ? this.rule_b : this.rule_s;
+    // } else {
+    //     rule = (bitmask & 32) ? this.rule_s : this.rule_b;
+    // }
 
     return rule >> this._bitcounts[bitmask & 0x757] & 1;
 };
