@@ -2,11 +2,11 @@
 
 var
     /** @const */
-    LOAD_FACTOR = .9,
+    LOAD_FACTOR = .9, // tried .6
     /** @const */
-    INITIAL_SIZE = 16,
+    INITIAL_SIZE = 16, // tried 20
     /** @const */
-    HASHMAP_LIMIT = 24,
+    HASHMAP_LIMIT = 24, // tried 32
 
     /** @const */
     MASK_LEFT = 1,
