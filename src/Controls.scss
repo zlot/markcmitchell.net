@@ -12,17 +12,15 @@
   }
   text {
     font-family: 'Helvetica Neue', Arial; 
-    font-size: 27px; 
+    font-size: 29px; 
     font-weight: bold; 
-    
+    letter-spacing: -1.9px;
     // font-variant: small-caps; 
     // text-transform: lowercase;
   }
   a {
     cursor: pointer;
     fill: white;
-    display: block;
-    padding: 40px;
     &:hover {
       text-decoration: underline;
     }

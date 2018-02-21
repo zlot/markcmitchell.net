@@ -1,7 +1,13 @@
 import React from 'react'
+import Controls from './Controls'
 
-
-const LifeCanvas = () => (
+const LifeCanvas = ({
+    run,
+    isRunning,
+    zoomIn,
+    zoomOut,
+    onMouseDown
+}) => (
 <div className='LifeCanvas' onMouseDown={onMouseDown}>
     <canvas id='main-canvas'></canvas>
     <div id="toolbar" style={{display: 'none'}}>
@@ -78,6 +84,13 @@ const LifeCanvas = () => (
         </div>
         <div id="loading_popup" style={{display: 'none'}} ></div>
     </div>
+    <Controls 
+        run={run} 
+        runText={isRunning ? 'Stop😳' : 'Run🔥'} 
+        zoomIn={zoomIn} 
+        zoomOut={zoomOut}
+    />
+    
 </div>
 )
 

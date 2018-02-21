@@ -29,9 +29,9 @@ export default class Controls extends React.Component {
             <use xlinkHref="#circlePath" fill="none"/>
             <text>
               <textPath xlinkHref="#circlePath">
-                <a onClick={this.props.run}>{runText}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a onClick={this.props.zoomIn}>Zoom +</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a onClick={this.props.zoomOut}>Zoom −</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a onMouseDown={(e) => {e.stopPropagation(); run()}}>{runText}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a onMouseDown={(e) => {e.stopPropagation(); zoomIn()}}>Zoom +</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a onMouseDown={(e) => {e.stopPropagation(); zoomOut()}}>Zoom −</a>
               </textPath>
             </text>
           </g>

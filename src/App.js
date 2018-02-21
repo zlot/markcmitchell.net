@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.scss'
 import Main from './lib/copy.sh-life/main'
 import LifeCanvas from './LifeCanvas'
-import Controls from './Controls'
 import {
   ExperimentalWithSmoothScroll,
   WorksWithSmoothScroll
@@ -49,6 +48,10 @@ class App extends Component {
   zoomOut = () => {
     this.main.userZoomOut()
   }
+  onMouseDown = (e) => {
+    this.main.onMouseDown(e)
+  }
+
 
   render() {
     return (
@@ -57,8 +60,8 @@ class App extends Component {
       <Router history={this.history}>
         <div>
           <div className='canvas-container'>
-            <LifeCanvas />
-            <Controls run={this.run} runText={this.state.isRunning ? 'Stop😳' : 'Run🔥'} zoomIn={this.zoomIn} zoomOut={this.zoomOut} />
+            <LifeCanvas run={this.run} isRunning={this.state.isRunning} zoomIn={this.zoomIn} zoomOut={this.zoomOut} onMouseDown={this.onMouseDown} />
+            
             {/* Note:: add a recenter type of button!! */}
           </div>
           
