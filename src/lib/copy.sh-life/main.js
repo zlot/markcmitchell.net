@@ -721,9 +721,6 @@ export default function Main()
         drawer.move(dx, dy);
 
         //lazy_redraw(life.root);
-
-        last_mouse_x = e.clientX;
-        last_mouse_y = e.clientY;
     }
 
     // This object holds all the pixels that have been drawn during one mousedown.
