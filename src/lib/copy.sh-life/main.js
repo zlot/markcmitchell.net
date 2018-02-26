@@ -272,10 +272,7 @@ export default function Main(props)
                 var chr = e.which,
                     do_redraw = false,
                     target = e.target.nodeName;
-
-                if(target === "INPUT" || target === "TEXTAREA") {
-                    return true;
-                }
+                    
                 if(e.ctrlKey || e.shiftKey || e.altKey) {
                     return true;
                 }
@@ -319,22 +316,24 @@ export default function Main(props)
                     $("rewind_button").onclick();
                     return false;
                 }
-                else if(chr === 219 || chr === 221) {
-                    // [ ]
-                    var step = life.step;
+                /* Set the step between each run. 
+                   Interesting to set really high, we can draw 
+                   with interesting patterns! */
+                // else if(chr === 219 || chr === 221) {
+                //     // [ ]
+                //     var step = life.step;
 
-                    if(chr === 219)
-                        step--;
-                    else
-                        step++;
+                //     if(chr === 219) 
+                //         step--;
+                //     else
+                //         step++;
 
-                    if(step >= 0)
-                    {
-                        life.set_step(step);
-                    }
+                //     if(step >= 0) {
+                //         life.set_step(step);
+                //     }
 
-                    return false;
-                }
+                //     return false;
+                // }
 
                 if(do_redraw) {
                     lazy_redraw(life.root);
