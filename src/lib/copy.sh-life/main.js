@@ -39,7 +39,6 @@ export default function Main(props)
         // is true when pattern is loaded
         isReady = false,
 
-        // is the game running ?
         /** @type {boolean} */
         running = false,
 
@@ -478,13 +477,12 @@ export default function Main(props)
         drawer.border_width = CELL_BORDER;
         drawer.cell_width = 2;
 
+        // Set standard GoL rules
         life.rule_s = 1 << 2 | 1 << 3; // 12 // 
         life.rule_b = 1 << 3; // 8 // 
         life.set_step(0);
 
         max_fps = DEFAULT_FPS;
-
-        debug("zoom is 1:2");
 
         drawer.center_view();
     }
