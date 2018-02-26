@@ -245,11 +245,10 @@ LifeUniverse.prototype.uncache = function(also_quick)
 
 
 // return false if a node is in the hashmap
-LifeUniverse.prototype.in_hashmap = function(n)
+LifeUniverse.prototype.in_hashmap = function in_hashmap(n)
 {
     var hash = this.calc_hash(n.nw.id, n.ne.id, n.sw.id, n.se.id) & this.hashmap_size,
         node = this.hashmap[hash];
-
     for(;;)
     {
         if(node === undefined)
@@ -260,7 +259,6 @@ LifeUniverse.prototype.in_hashmap = function(n)
         {
             return true;
         }
-
         node = node.hashmap_next;
     }
 };
