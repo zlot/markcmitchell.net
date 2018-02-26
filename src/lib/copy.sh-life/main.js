@@ -203,7 +203,10 @@ export default function Main(props)
                     });
                 }
             }
-
+            drawer.canvas.addEventListener('dblclick', (e) => {
+                this.userZoomIn();
+                return false;
+            })
 
             drawer.canvas.addEventListener("touchstart", function(e)
             {
