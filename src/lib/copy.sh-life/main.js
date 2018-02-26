@@ -102,7 +102,6 @@ export default function Main(props)
         }
     }
 
-    setup.call(this)
     this.onMouseDown = (e) => 
     {
         if(e.nativeEvent.which === 3 || e.nativeEvent.which === 2) {}
@@ -147,6 +146,8 @@ export default function Main(props)
         }
     }
 
+    setup.call(this)
+    
     // setup
     function setup()
     {
@@ -170,7 +171,6 @@ export default function Main(props)
 
         load_pattern('main.png');
         
-        window.addEventListener("mousemove", changeCursorToEraserOnHover, true);
 
         function load_pattern(patternToLoad)
         {
@@ -534,6 +534,9 @@ export default function Main(props)
                 pattern_source_url = rle_link(pattern_id);
             }
         });
+
+        setTimeout(() => window.addEventListener("mousemove", changeCursorToEraserOnHover, true))
+
     }
 
     function fit_pattern()
