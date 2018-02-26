@@ -35,7 +35,7 @@ export default function Main()
         last_mouse_x,
         last_mouse_y,
 
-        mouse_set,
+        mouse_is_drawing_cell_on_state,
 
         // is the game running ?
         /** @type {boolean} */
@@ -691,25 +691,71 @@ export default function Main()
         last_mouse_y = e.clientY;
     }
 
+    // This object holds all the pixels that have been drawn during one mousedown.
+    const localDrawnPixels = Object.create(null); 
     /*
      * The mousemove event which draw pixels
      */
     function do_field_draw(e)
     {
-        const coords = drawer.pixel2cell(e.layerX, e.layerY);
-        const DRAW_CELL_SIZE = 12;
+        let coords = drawer.pixel2cell(e.clientX, e.clientY);
+        // don't draw the same pixel twice
+        if(coords.x === last_mouse_x || coords.y === last_mouse_y) { 
+            return
+        }
+        const a = Math.abs(coords.x - last_mouse_x);
+        const b = Math.abs(coords.y - last_mouse_y);
+        const distanceBetweenLastMousePosAndCurrent = Math.hypot(a, b);
+        // if mouse_is_drawing_cell_on_state is false, we're erasing. Make cell size bigger!
+        const CELL_SIZE_TO_DRAW_BASE = mouse_is_drawing_cell_on_state ? 8 : 28; // 8 before!
+        const cellSizeToDrawSizedByVelocity = Math.floor(CELL_SIZE_TO_DRAW_BASE+(distanceBetweenLastMousePosAndCurrent*0.045));
+               
+        if(last_mouse_x === null || last_mouse_y === null) {
+            setLastMousePosition(coords);
+            drawCellsWithinSize(coords, CELL_SIZE_TO_DRAW_BASE)
+            return;
+        }
+        const lerpValue = Math.max(0.05, 1-(distanceBetweenLastMousePosAndCurrent*0.03)); // determines how many times we loop drawCellsWithinSize due to the interpolation of last mouse pos and current pos 
 
-        for(let y = coords.y-DRAW_CELL_SIZE/2; y<coords.y+DRAW_CELL_SIZE/2; y++) {
-            for(let x = coords.x-DRAW_CELL_SIZE/2; x<coords.x+DRAW_CELL_SIZE/2; x++) {
-                // don't draw the same pixel twice
-                if(x !== last_mouse_x || y !== last_mouse_y) {
-                    life.set_bit(x, y, mouse_set);
-                    drawer.draw_cell(x, y, mouse_set);
+        for(let i=0; i<1; i+=lerpValue) {
+            const lerpedPos = lerp({x:last_mouse_x, y:last_mouse_y}, {x:coords.x,y:coords.y}, i);
+            drawCellsWithinSize(lerpedPos, returnEvenNumberFrom(cellSizeToDrawSizedByVelocity))
+        }
+        // Makes sure that the cell is drawn in correct grid structure
+        function returnEvenNumberFrom(val) {
+            return val % 2 === 0 ? val : val+1;
+        }
+
+        setLastMousePosition(coords);
+       
+        function drawCellsWithinSize(pos, cellSize) {
+            for(let y = pos.y-cellSize/2; y<pos.y+cellSize/2; y++) {
+                // don't use localDrawnPixels array if we're erasing
+                if(mouse_is_drawing_cell_on_state && typeof localDrawnPixels[y] === 'undefined') {
+                    localDrawnPixels[y] = {}
+                }
+                for(let x = pos.x-cellSize/2; x<pos.x+cellSize/2; x++) {
+                    if(mouse_is_drawing_cell_on_state && localDrawnPixels[y][x] === true) {
+                        // exists already, skip
+                        continue
+                    }
+                    life.set_bit(x, y, mouse_is_drawing_cell_on_state);
+                    drawer.draw_cell(x, y, mouse_is_drawing_cell_on_state);
+                    if(mouse_is_drawing_cell_on_state) localDrawnPixels[y][x] = true
                 }
             }
         }
-        last_mouse_x = coords.x;
-        last_mouse_y = coords.y;        
+
+        function setLastMousePosition(coords) {
+            last_mouse_x = coords.x;
+            last_mouse_y = coords.y;
+        }
+
+        function lerp(a, b, frac) {
+            var nx = a.x+(b.x-a.x)*frac;
+            var ny = a.y+(b.y-a.y)*frac;
+            return {x: Math.floor(nx),  y: Math.floor(ny)};
+        }
     }
 
     function set_query(filename)
