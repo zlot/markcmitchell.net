@@ -564,6 +564,28 @@ export default function Main()
 
         running = true;
 
+        // runChangeRulesLive()
+        // Occasionally change rules to encourage more strange growth
+        // Also increases CPU load. Might skip doing this for now.
+        function runChangeRulesLive() {
+            setInterval(() => {
+                // const coralRule = {rule_s: 496, rule_b: 8};
+                // const dayAndNightRule = {rule_s: 472, rule_b: 456};
+                // const quickFadeRule = {rule_s: 52, rule_b: 328}
+                // const golRule = {rule_s: 12, rule_b: 8}
+                // const snowLifeRule = {rule_s: 142, rule_b: 8}
+                // const assimilationRule = {rule_s: 240, rule_b: 56}
+                const stainsRule = {rule_s: 492, rule_b: 456};
+                const stainsRuleEncourageGrowth = {rule_s: 492, rule_b: 264};
+                // Playing with this ... it doesn't like this rule (lots of load).
+                // Find a rule that allows it to expand a bit, but doesn't tax the cpu!
+                life.set_rules(stainsRuleEncourageGrowth.rule_s, stainsRuleEncourageGrowth.rule_b);
+                setTimeout(() => {
+                    life.set_rules(stainsRule.rule_s, stainsRule.rule_b);
+                }, 300)
+            }, 10000)
+        }
+
         if(life.generation === 0)
         {
             life.save_rewind_state();
