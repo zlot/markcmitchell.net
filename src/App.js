@@ -34,8 +34,12 @@ class App extends Component {
     })
   }
 
+  setIsRunning = (running) => {
+    this.setState({isRunning: running})
+  }
+
   componentDidMount = () => {
-    this.main = new Main()
+    this.main = new Main({setIsRunning: this.setIsRunning})
   }
 
   run = () => {

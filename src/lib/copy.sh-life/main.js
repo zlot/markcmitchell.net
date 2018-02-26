@@ -16,7 +16,7 @@ const MAX_ZOOM_IN_LEVEL = 8;
 const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
 
-export default function Main()
+export default function Main(props)
 {
     if(!document.addEventListener) {
         // IE 8 seems to switch into rage mode if the code is only loaded partly, so we are saying goodbye earlier
@@ -78,6 +78,7 @@ export default function Main()
 
     this.userStop = () => {
         stop();
+        props.setIsRunning(false)
     }
 
     this.userZoomIn = () => {
@@ -92,7 +93,7 @@ export default function Main()
     }
     this.userZoomOut = () => {
         if(isAtMaxZoomOut()) return;
-             
+
         drawer.zoom_centered(true);
         lazy_redraw(life.root);
 
@@ -455,6 +456,7 @@ export default function Main()
         if(running)
         {
             running = false;
+            props.setIsRunning(false);
             debug("Run");
 
             onstop = callback;
@@ -553,6 +555,7 @@ export default function Main()
             per_frame = frame_time;
 
         running = true;
+        props.setIsRunning(true);
 
         // runChangeRulesLive()
         // Occasionally change rules to encourage more strange growth
