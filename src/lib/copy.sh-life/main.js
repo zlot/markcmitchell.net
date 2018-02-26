@@ -174,14 +174,10 @@ export default function Main(props)
         load_pattern('main.png');
         
 
-        function load_pattern(patternToLoad)
-        {
-            http_get(
-                rle_link(patternToLoad),
-                function(text) {
-                    setup_pattern(text, patternToLoad);
-                }
-            );
+        function load_pattern(patternToLoad) {
+            http_get(rle_link(patternToLoad), function(text) {
+                setup_pattern(text, patternToLoad);
+            });
         }
 
         function init_ui()
