@@ -36,6 +36,8 @@ export default function Main(props)
         last_mouse_y,
 
         mouse_is_drawing_cell_on_state,
+        // is true when pattern is loaded
+        isReady = false,
 
         // is the game running ?
         /** @type {boolean} */
@@ -104,6 +106,7 @@ export default function Main(props)
 
     this.onMouseDown = (e) => 
     {
+        if(!isReady) return;
         if(e.nativeEvent.which === 3 || e.nativeEvent.which === 2) {}
         else if(e.nativeEvent.which === 1)
         {
@@ -527,6 +530,7 @@ export default function Main(props)
             fit_pattern();
             drawer.redraw(life.root);
 
+            isReady = true;
             update_hud();
 
             if(!pattern_source_url && pattern_id)
