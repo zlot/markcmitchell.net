@@ -422,11 +422,9 @@ export default function Main(props)
                 lazy_redraw(life.root);
             }
 
-            $("settings_reset").onclick = function()
+            $("reset").onclick = function()
             {
-                reset_settings();
-
-                lazy_redraw(life.root);
+                load_pattern('markcmitchell');
             }
 
             $("settings_button").onclick = function()
