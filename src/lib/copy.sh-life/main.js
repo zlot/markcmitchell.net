@@ -731,10 +731,7 @@ export default function Main()
     function do_field_draw(e)
     {
         let coords = drawer.pixel2cell(e.clientX, e.clientY);
-        // don't draw the same pixel twice
-        if(coords.x === last_mouse_x || coords.y === last_mouse_y) { 
-            return
-        }
+
         const a = Math.abs(coords.x - last_mouse_x);
         const b = Math.abs(coords.y - last_mouse_y);
         const distanceBetweenLastMousePosAndCurrent = Math.hypot(a, b);
