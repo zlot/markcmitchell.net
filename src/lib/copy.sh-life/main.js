@@ -81,9 +81,8 @@ export default function Main()
     }
 
     this.userZoomIn = () => {
-        if(isAtMaxZoomIn()) {
-            return;
-        }
+        if(isAtMaxZoomIn()) return;
+
         drawer.zoom_centered(false);
         lazy_redraw(life.root);
 
@@ -92,9 +91,8 @@ export default function Main()
         }
     }
     this.userZoomOut = () => {
-        if(isAtMaxZoomOut()) {
-            return;
-        }        
+        if(isAtMaxZoomOut()) return;
+             
         drawer.zoom_centered(true);
         lazy_redraw(life.root);
 
@@ -274,70 +272,53 @@ export default function Main()
                     do_redraw = false,
                     target = e.target.nodeName;
 
-                //console.log(e.target)
-                //console.log(chr + " " + e.charCode + " " + e.keyCode);
-
-                if(target === "INPUT" || target === "TEXTAREA")
-                {
+                if(target === "INPUT" || target === "TEXTAREA") {
                     return true;
                 }
-
-                if(e.ctrlKey || e.shiftKey || e.altKey)
-                {
+                if(e.ctrlKey || e.shiftKey || e.altKey) {
                     return true;
                 }
-
-                if(chr === 37 || chr === 72)
-                {
+                if(chr === 37 || chr === 72) {
                     drawer.move(15, 0);
                     do_redraw = true;
                 }
-                else if(chr === 38 || chr === 75)
-                {
+                else if(chr === 38 || chr === 75) {
                     drawer.move(0, 15);
                     do_redraw = true;
                 }
-                else if(chr === 39 || chr === 76)
-                {
+                else if(chr === 39 || chr === 76) {
                     drawer.move(-15, 0);
                     do_redraw = true;
                 }
-                else if(chr === 40 || chr === 74)
-                {
+                else if(chr === 40 || chr === 74) {
                     drawer.move(0, -15);
                     do_redraw = true;
                 }
-                else if(chr === 27)
-                {
+                else if(chr === 27) {
                     // escape
                     return false;
                 }
-                else if(chr === 13)
-                {   
+                else if(chr === 13) {   
                     // enter
                     this.userRun()
                     return false;
                 }
-                else if(chr === 189 || chr === 173 || chr === 109)
-                {
+                else if(chr === 189 || chr === 173 || chr === 109) {
                     // -
                     drawer.zoom_centered(true);
                     do_redraw = true;
                 }
-                else if(chr === 187 || chr === 61)
-                {
+                else if(chr === 187 || chr === 61) {
                     // + and =
                     drawer.zoom_centered(false);
                     do_redraw = true;
                 }
-                else if(chr === 8)
-                {
+                else if(chr === 8) {
                     // backspace
                     $("rewind_button").onclick();
                     return false;
                 }
-                else if(chr === 219 || chr === 221)
-                {
+                else if(chr === 219 || chr === 221) {
                     // [ ]
                     var step = life.step;
 
@@ -354,13 +335,10 @@ export default function Main()
                     return false;
                 }
 
-                if(do_redraw)
-                {
+                if(do_redraw) {
                     lazy_redraw(life.root);
-
                     return false;
                 }
-
                 return true;
             }.bind(this);
 
@@ -573,7 +551,6 @@ export default function Main()
             frame_time = 1000 / max_fps,
             interval,
             per_frame = frame_time;
-
 
         running = true;
 
