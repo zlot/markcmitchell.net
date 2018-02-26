@@ -188,21 +188,6 @@ export default function Main(props)
                 requestAnimationFrame(lazy_redraw.bind(0, life.root));
             }, 500);
 
-            $("rewind_button").onclick = function()
-            {
-                if(life.rewind_state)
-                {
-                    stop(function()
-                    {
-                        life.restore_rewind_state();
-
-                        fit_pattern();
-                        drawer.redraw(life.root);
-
-                        update_hud();
-                    });
-                }
-            }
             drawer.canvas.addEventListener('dblclick', (e) => {
                 this.userZoomIn();
                 return false;
@@ -311,11 +296,7 @@ export default function Main(props)
                     // + and =
                     this.userZoomIn();
                 }
-                else if(chr === 8) {
-                    // backspace
-                    $("rewind_button").onclick();
-                    return false;
-                }
+
                 /* Set the step between each run. 
                    Interesting to set really high, we can draw 
                    with interesting patterns! */
@@ -510,9 +491,7 @@ export default function Main(props)
             life.clear_pattern();
             life.make_center(result.field_x, result.field_y, bounds);
             life.setup_field(result.field_x, result.field_y, bounds);
-
-            life.save_rewind_state();
-            
+           
             if(result.rule_s && result.rule_b)
             {
                 life.set_rules(result.rule_s, result.rule_b);
@@ -579,10 +558,6 @@ export default function Main(props)
             }, 10000)
         }
 
-        if(life.generation === 0)
-        {
-            life.save_rewind_state();
-        }
 
         interval = setInterval(function()
         {
