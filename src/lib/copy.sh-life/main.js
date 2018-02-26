@@ -294,6 +294,7 @@ export default function Main(props)
                 }
                 else if(chr === 27) {
                     // escape
+                    this.userStop()
                     return false;
                 }
                 else if(chr === 13) {   
@@ -303,13 +304,11 @@ export default function Main(props)
                 }
                 else if(chr === 189 || chr === 173 || chr === 109) {
                     // -
-                    drawer.zoom_centered(true);
-                    do_redraw = true;
+                    this.userZoomOut();
                 }
                 else if(chr === 187 || chr === 61) {
                     // + and =
-                    drawer.zoom_centered(false);
-                    do_redraw = true;
+                    this.userZoomIn();
                 }
                 else if(chr === 8) {
                     // backspace
