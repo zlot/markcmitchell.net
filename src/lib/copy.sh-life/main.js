@@ -104,6 +104,50 @@ export default function Main()
     }
 
     setup.call(this)
+    this.onMouseDown = (e) => 
+    {
+        if(e.nativeEvent.which === 3 || e.nativeEvent.which === 2) {}
+        else if(e.nativeEvent.which === 1)
+        {
+            // reset the localDrawnPixels object.
+            var props = Object.keys(localDrawnPixels);
+            for (var i = 0; i < props.length; i++) {
+                delete localDrawnPixels[props[i]];
+            }
+            var coords = drawer.pixel2cell(e.clientX, e.clientY);
+            mouse_is_drawing_cell_on_state = !life.get_bit(coords.x, coords.y); // used in do_field_draw
+            window.addEventListener("mousemove", do_field_draw, true);
+            window.removeEventListener("mousemove", changeCursorToEraserOnHover, true);
+            setEraserCursor(!mouse_is_drawing_cell_on_state)
+            do_field_draw(e); // do it on first mousedown. listener takes care of holding down
+        }
+
+        return false;
+    };    
+
+    function changeCursorToEraserOnHover(e) {
+        const coords = drawer.pixel2cell(e.clientX, e.clientY);
+        const isHoveringOverLivingCell = life.get_bit(coords.x, coords.y);
+        if(isHoveringOverLivingCell) {
+            setEraserCursor(true);
+        } else {
+            setEraserCursor(false);
+        }
+    }
+
+
+    function setEraserCursor(useBool) {
+        if(!useBool) {
+            if(document.body.classList.contains('eraser-cursor')) {
+                document.body.classList.remove('eraser-cursor');
+            }            
+            return;  
+        }
+        if(!document.body.classList.contains('eraser-cursor')) {
+            document.body.classList.add('eraser-cursor');
+        }
+    }
+
     // setup
     function setup()
     {
@@ -126,6 +170,8 @@ export default function Main()
         reset_settings();
 
         load_pattern('main.png');
+        
+        window.addEventListener("mousemove", changeCursorToEraserOnHover, true);
 
         function load_pattern(patternToLoad)
         {
@@ -161,33 +207,6 @@ export default function Main()
                 }
             }
 
-            drawer.canvas.ondblclick = function(e)
-            {
-                if(isAtMaxZoomIn()) {
-                    return;
-                }
-                drawer.zoom(false, e.clientX, e.clientY);
-                lazy_redraw(life.root);
-                return false;
-            };
-
-
-            drawer.canvas.onmousedown = function(e)
-            {
-                if(e.which === 3 || e.which === 2)
-                {
-                }
-                else if(e.which === 1)
-                {
-                    var coords = drawer.pixel2cell(e.clientX, e.clientY);
-                    mouse_set = !life.get_bit(coords.x, coords.y); // used in do_field_draw
-
-                    window.addEventListener("mousemove", do_field_draw, true);
-                    do_field_draw(e); // do it on first mousedown. listener takes care of holding down
-                }
-
-                return false;
-            };
 
             drawer.canvas.addEventListener("touchstart", function(e)
             {
@@ -231,15 +250,9 @@ export default function Main()
             {
                 last_mouse_x = null;
                 last_mouse_y = null;
-
                 window.removeEventListener("mousemove", do_field_draw, true);
-                window.removeEventListener("mousemove", do_field_move, true);
-            }
-
-            window.onmousemove = function(e)
-            {
-                var coords = drawer.pixel2cell(e.clientX, e.clientY);
-                // debug(`mouse: ${coords.x}, ${coords.y}`);
+                window.addEventListener("mousemove", changeCursorToEraserOnHover, true);
+                setEraserCursor(!mouse_is_drawing_cell_on_state)
             }
 
             drawer.canvas.oncontextmenu = function(e)
