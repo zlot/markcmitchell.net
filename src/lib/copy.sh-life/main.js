@@ -107,21 +107,19 @@ export default function Main()
     // setup
     function setup()
     {
-        if(loaded)
-        {
+        if(loaded) {
             // onload has been called already
             return;
         }
 
         loaded = true;
-
-        // places canvas into DOM
+        
         if(!drawer.init(document.getElementsByClassName('LifeCanvas')[0]))
         {
             alert("Canvas-less browsers are not supported. I'm sorry for that.");
             return;
         }
-
+        
         init_ui.call(this);
         drawer.set_size(document.body.clientWidth, document.body.clientHeight);
 
