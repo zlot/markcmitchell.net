@@ -15,6 +15,8 @@ const CELL_COLOR = '#ff0200';
 const MAX_ZOOM_IN_LEVEL = 8;
 const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
+const PATTERN = 'markcmitchell-smaller-size'
+const PATTERN_PATH = 'my-patterns/'
 
 export default function Main(props)
 {
@@ -49,11 +51,11 @@ export default function Main(props)
          * path to the folder with all patterns
          * @const
          */
-        pattern_path = "examples/",
+        // pattern_path = "examples/",
+        pattern_path = PATTERN_PATH,
 
         loaded = false,
 
-        
         life = new LifeUniverse(),
         drawer = new LifeCanvasDrawer();
 
@@ -170,8 +172,7 @@ export default function Main(props)
 
         reset_settings();
 
-        load_pattern('main.png');
-        
+        load_pattern.call(this, PATTERN);
 
         function load_pattern(patternToLoad) {
             http_get(rle_link(patternToLoad), (text) => {
@@ -319,8 +320,8 @@ export default function Main(props)
                 lazy_redraw(life.root);
             };
 
-            $("reset").onclick = function() {
-                load_pattern('markcmitchell');
+            $("reset").onclick = () => {
+                load_pattern(PATTERN);
             };
         }
     }
