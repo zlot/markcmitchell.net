@@ -159,8 +159,6 @@ export default function Main(props)
             // onload has been called already
             return;
         }
-
-        loaded = true;
         
         if(!drawer.init(document.getElementsByClassName('LifeCanvas')[0]))
         {
@@ -177,7 +175,10 @@ export default function Main(props)
         function load_pattern(patternToLoad) {
             http_get(rle_link(patternToLoad), (text) => {
                 setup_pattern(text, patternToLoad);
-                init_ui.call(this);
+                if(!loaded) {
+                    init_ui.call(this);
+                }
+                loaded = true;
             });
         }
 
