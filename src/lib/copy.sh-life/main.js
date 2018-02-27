@@ -174,7 +174,7 @@ export default function Main(props)
         
 
         function load_pattern(patternToLoad) {
-            http_get(rle_link(patternToLoad), function(text) {
+            http_get(rle_link(patternToLoad), (text) => {
                 setup_pattern(text, patternToLoad);
                 init_ui.call(this);
             });
