@@ -317,7 +317,6 @@ export default function Main(props)
             {
                 fit_pattern();
                 lazy_redraw(life.root);
-                update_hud();
             };
 
             $("reset").onclick = function() {
@@ -410,7 +409,6 @@ export default function Main(props)
             drawer.redraw(life.root);
 
             isReady = true;
-            update_hud();
 
             if(!pattern_source_url && pattern_id)
             {
@@ -435,7 +433,6 @@ export default function Main(props)
             start,
             last_frame,
             frame_time = 1000 / max_fps,
-            interval,
             per_frame = frame_time;
 
         running = true;
@@ -463,12 +460,6 @@ export default function Main(props)
             }, 10000)
         }
 
-
-        interval = setInterval(function()
-        {
-            update_hud(1000 / frame_time);
-        }, 666);
-
         start = Date.now();
         last_frame = start - per_frame;
 
@@ -476,9 +467,6 @@ export default function Main(props)
         {
             if(!running)
             {
-                clearInterval(interval);
-                update_hud(1000 / frame_time);
-
                 if(onstop) {
                     onstop();
                 }
@@ -508,22 +496,6 @@ export default function Main(props)
         }
 
         update();
-    }
-
-    /**
-     * @param {number=} fps
-     */
-    function update_hud(fps)
-    {
-
-        if(drawer.cell_width >= 1)
-        {
-            debug("zoom is 1:" + drawer.cell_width);
-        }
-        else
-        {
-            debug("zoom is " + 1 / drawer.cell_width + ":1");
-        }
     }
 
     function lazy_redraw(node)
