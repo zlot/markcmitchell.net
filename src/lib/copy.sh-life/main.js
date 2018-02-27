@@ -182,11 +182,10 @@ export default function Main(props)
 
         function init_ui()
         {
-            window.onresize = debounce(function()
-            {
+            window.addEventListener('resize', debounce(() => {
                 drawer.set_size(document.body.clientWidth, document.body.clientHeight);
                 requestAnimationFrame(lazy_redraw.bind(0, life.root));
-            }, 500);
+            }, 500))
 
             drawer.canvas.addEventListener('dblclick', (e) => {
                 this.userZoomIn();
