@@ -8,7 +8,7 @@ function debug() {
     }
 }
 
-const DEFAULT_FPS = 20;
+const DEFAULT_FPS = 24;
 
 const BACKGROUND_COLOR = '#0b00b5';
 const CELL_COLOR = '#ff0200';
