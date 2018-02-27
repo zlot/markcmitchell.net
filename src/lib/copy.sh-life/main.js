@@ -166,7 +166,6 @@ export default function Main(props)
             return;
         }
         
-        init_ui.call(this);
         drawer.set_size(document.body.clientWidth, document.body.clientHeight);
 
         reset_settings();
@@ -177,6 +176,7 @@ export default function Main(props)
         function load_pattern(patternToLoad) {
             http_get(rle_link(patternToLoad), function(text) {
                 setup_pattern(text, patternToLoad);
+                init_ui.call(this);
             });
         }
 
