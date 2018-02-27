@@ -463,7 +463,7 @@ export default function Main(props)
         start = Date.now();
         last_frame = start - per_frame;
 
-        function update()
+        function update(timestamp)
         {
             if(!running)
             {
