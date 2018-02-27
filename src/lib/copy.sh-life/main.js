@@ -320,74 +320,11 @@ export default function Main(props)
                 update_hud();
             };
 
-            var select_rules = $("select_rules").getElementsByTagName("span");
-
-            for(var i = 0; i < select_rules.length; i++)
-            {
-                /** @this {Element} */
-                select_rules[i].onclick = function()
-                {
-                    $("rule").value = this.getAttribute("data-rule");
-                };
-            }
-
-            $("settings_submit").onclick = function()
-            {
-                var new_rule_s,
-                    new_rule_b,
-                    new_gen_step;
-
-
-                new_rule_s = formats.parse_rule($("rule").value, true);
-                new_rule_b = formats.parse_rule($("rule").value, false);
-
-                new_gen_step = Math.round(Math.log(Number($("gen_step").value) || 0) / Math.LN2);
-
-                life.set_rules(new_rule_s, new_rule_b);
-
-                if(!new_gen_step || new_gen_step < 0) {
-                    life.set_step(0);
-                }
-                else {
-                    life.set_step(new_gen_step);
-                }
-
-                max_fps = Number($("max_fps").value);
-                if(!max_fps || max_fps < 0) {
-                    max_fps = DEFAULT_FPS;
-                }
-
-                drawer.border_width = parseFloat($("border_width").value);
-                if(isNaN(drawer.border_width) || drawer.border_width < 0 || drawer.border_width > .5)
-                {
-                    drawer.border_width = CELL_BORDER;
-                }
-
-                $("statusbar").style.color = drawer.cell_color;
-                $("statusbar").style.textShadow = "0px 0px 1px " + drawer.cell_color;
-
-                $("toolbar").style.color = drawer.background_color;
-
-                lazy_redraw(life.root);
-            }
-
-            $("reset").onclick = function()
-            {
+            $("reset").onclick = function() {
                 load_pattern('markcmitchell');
-            }
-
-            $("settings_button").onclick = function()
-            {
-                $("rule").value = formats.rule2str(life.rule_s, life.rule_b);
-                $("max_fps").value = max_fps;
-                $("gen_step").value = Math.pow(2, life.step);
-
-                $("border_width").value = drawer.border_width;
             };
-
         }
     }
-
 
     function rle_link(id)
     {
