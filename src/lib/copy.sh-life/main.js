@@ -361,8 +361,8 @@ export default function Main(props)
         drawer.cell_width = 2;
 
         // Set standard GoL rules
-        life.rule_s = 1 << 2 | 1 << 3; // 12 // 
-        life.rule_b = 1 << 3; // 8 // 
+        // life.rule_s = 1 << 2 | 1 << 3; // 12 // 
+        // life.rule_b = 1 << 3; // 8 // 
         life.set_step(0);
 
         max_fps = DEFAULT_FPS;
