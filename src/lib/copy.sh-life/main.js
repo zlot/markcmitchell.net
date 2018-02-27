@@ -313,13 +313,6 @@ export default function Main(props)
                 return true;
             }.bind(this);
 
-            $("faster_button").onclick = function()
-            {
-                var step = life.step + 1;
-
-                life.set_step(step);
-            };
-
             $("slower_button").onclick = function()
             {
                 if(life.step > 0)
