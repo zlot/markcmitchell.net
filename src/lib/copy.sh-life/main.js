@@ -513,18 +513,12 @@ export default function Main(props)
     {
         var http = new XMLHttpRequest();
 
-        http.onreadystatechange = function()
-        {
-            if(http.readyState === 4)
-            {
-                if(http.status === 200)
-                {
+        http.onreadystatechange = function() {
+            if(http.readyState === 4) {
+                if(http.status === 200) {
                     onready(http.responseText, url);
-                }
-                else
-                {
-                    if(onerror)
-                    {
+                } else {
+                    if(onerror) {
                         onerror(http.responseText, http.status);
                     }
                 }
@@ -535,8 +529,7 @@ export default function Main(props)
         http.send("");
 
         return {
-            cancel : function()
-            {
+            cancel : function() {
                 http.abort();
             }
         };
