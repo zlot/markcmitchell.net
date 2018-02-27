@@ -313,11 +313,6 @@ export default function Main(props)
                 return true;
             }.bind(this);
 
-            $("normalspeed_button").onclick = function()
-            {
-                life.set_step(0);
-            };
-
             $("initial_pos_button").onclick = function()
             {
                 fit_pattern();
