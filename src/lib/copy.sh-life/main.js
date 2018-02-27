@@ -114,7 +114,7 @@ export default function Main(props)
             for (var i = 0; i < props.length; i++) {
                 delete localDrawnPixels[props[i]];
             }
-            var coords = drawer.pixel2cell(e.clientX, e.clientY);
+            var coords = drawer.pixel2cell(e.pageX, e.pageY);
             mouse_is_drawing_cell_on_state = !life.get_bit(coords.x, coords.y); // used in do_field_draw
             window.addEventListener("mousemove", do_field_draw, true);
             window.removeEventListener("mousemove", changeCursorToEraserOnHover, true);
@@ -126,7 +126,7 @@ export default function Main(props)
     };    
 
     function changeCursorToEraserOnHover(e) {
-        const coords = drawer.pixel2cell(e.clientX, e.clientY);
+        const coords = drawer.pixel2cell(e.pageX, e.pageY);
         const isHoveringOverLivingCell = life.get_bit(coords.x, coords.y);
         if(isHoveringOverLivingCell) {
             setEraserCursor(true);
@@ -685,7 +685,7 @@ export default function Main(props)
      */
     function do_field_draw(e)
     {
-        let coords = drawer.pixel2cell(e.clientX, e.clientY);
+        let coords = drawer.pixel2cell(e.pageX, e.pageY);
 
         const a = Math.abs(coords.x - last_mouse_x);
         const b = Math.abs(coords.y - last_mouse_y);
