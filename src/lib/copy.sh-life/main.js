@@ -313,7 +313,7 @@ export default function Main(props)
                 return true;
             }.bind(this);
 
-            $("initial_pos_button").onclick = function()
+            $("move_to_initial_position").onclick = function()
             {
                 fit_pattern();
                 lazy_redraw(life.root);
