@@ -12,7 +12,7 @@ export default function withSmoothScroll(WrappedComponent, componentName) {
     }
 
     render = () => (
-      <div className={`page ${componentName}`} ref={(el => {this.el = el})}>
+      <div className='page' ref={(el => {this.el = el})}>
         <WrappedComponent />
       </div>
     )
