@@ -205,24 +205,14 @@ export default function Main(props)
                 return false;
             })
 
-            drawer.canvas.addEventListener("touchstart", function(e) {
+            drawer.canvas.addEventListener("touchstart", (e) => {
                 // left mouse simulation
                 var ev = {
-                    which: 1,
-                    clientX: e.changedTouches[0].clientX,
-                    clientY: e.changedTouches[0].clientY,
+                    nativeEvent: {which: 1},
+                    pageX: e.changedTouches[0].pageX,
+                    pageY: e.changedTouches[0].pageY,
                 };
-                drawer.canvas.onmousedown(ev);
-                e.preventDefault();
-            }, false);
-
-            drawer.canvas.addEventListener("touchmove", function(e) {
-                var ev = {
-                    clientX: e.changedTouches[0].clientX,
-                    clientY: e.changedTouches[0].clientY,
-                };
-
-                do_field_move(ev);
+                this.onMouseDown(ev);
                 e.preventDefault();
             }, false);
 
