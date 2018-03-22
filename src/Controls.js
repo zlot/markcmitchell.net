@@ -2,11 +2,17 @@ import React from 'react'
 
 export default class Controls extends React.Component {
 
+  componentDidMount = () => {
+    this.el.addEventListener('touchmove', (e) => {
+      e.preventDefault()
+    })
+  }
+
   render() {
     const {run, runText, zoomIn, zoomOut} = this.props
 
     return (
-      <div id="circle">
+      <div id="circle" ref={el => {this.el = el}}>
         <svg 
           version="1.1" 
           xmlns="http://www.w3.org/2000/svg" 
