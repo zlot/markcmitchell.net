@@ -1,5 +1,4 @@
 import React from 'react'
-import './Controls.scss'
 
 export default class Controls extends React.Component {
 
