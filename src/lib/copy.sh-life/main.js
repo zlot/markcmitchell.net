@@ -120,6 +120,7 @@ export default function Main(props)
             var coords = drawer.pixel2cell(e.pageX, e.pageY);
             mouse_is_drawing_cell_on_state = !life.get_bit(coords.x, coords.y); // used in do_field_draw
             window.addEventListener("mousemove", do_field_draw, true);
+            window.addEventListener("touchmove", onTouchMoveWhileTouchDown, true);
             window.removeEventListener("mousemove", changeCursorToEraserOnHover, true);
             setEraserCursor(!mouse_is_drawing_cell_on_state)
             do_field_draw(e); // do it on first mousedown. listener takes care of holding down
@@ -540,6 +541,14 @@ export default function Main(props)
             }
         };
     }
+
+    function onTouchMoveWhileTouchDown(e) {
+        var ev = {
+            pageX: e.changedTouches[0].pageX,
+            pageY: e.changedTouches[0].pageY,
+        };
+        do_field_draw(ev);
+    }    
 
     /*
      * The mousemove event which allows moving around
