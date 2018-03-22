@@ -108,6 +108,7 @@ export default function Main(props)
     this.onMouseDown = (e) => 
     {
         if(!isReady) return;
+
         if(e.nativeEvent.which === 3 || e.nativeEvent.which === 2) {}
         else if(e.nativeEvent.which === 1)
         {
@@ -126,6 +127,15 @@ export default function Main(props)
 
         return false;
     };    
+
+    this.onMouseUp = (e) => {
+        last_mouse_x = null;
+        last_mouse_y = null;
+        window.removeEventListener("mousemove", do_field_draw, true);
+        window.removeEventListener("touchmove", onTouchMoveWhileTouchDown, true);
+        window.addEventListener("mousemove", changeCursorToEraserOnHover, true);
+        setEraserCursor(!mouse_is_drawing_cell_on_state)
+    }
 
     function changeCursorToEraserOnHover(e) {
         const coords = drawer.pixel2cell(e.pageX, e.pageY);
@@ -215,23 +225,17 @@ export default function Main(props)
                 e.preventDefault();
             }, false);
 
-            drawer.canvas.addEventListener("touchend", function(e) {
-                window.onmouseup(e);
+            drawer.canvas.addEventListener("touchend", (e) => {
+                this.onMouseUp(e);
                 e.preventDefault();
             }, false);
 
-            drawer.canvas.addEventListener("touchcancel", function(e) {
-                window.onmouseup(e);
+            drawer.canvas.addEventListener("touchcancel", (e) => {
+                this.onMouseUp(e);
                 e.preventDefault();
             }, false);
 
-            window.addEventListener("mouseup", (e) => {
-                last_mouse_x = null;
-                last_mouse_y = null;
-                window.removeEventListener("mousemove", do_field_draw, true);
-                window.addEventListener("mousemove", changeCursorToEraserOnHover, true);
-                setEraserCursor(!mouse_is_drawing_cell_on_state)
-            })
+            window.addEventListener("mouseup", this.onMouseUp)
 
             drawer.canvas.oncontextmenu = function(e) {
                 return false;
