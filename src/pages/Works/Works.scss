@@ -9,7 +9,7 @@
     margin-bottom: 60px;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     
     &__how-ethical-are-you {
       h1 {
@@ -44,7 +44,6 @@
     }
     &__siam {
       h1 {
-        transform: translate(0, 59px);
         top: -70px;
         left: 68px;
         width: 103px;
@@ -56,9 +55,9 @@
     }
     &__uts {
       h1 {
-        transform: translate(-196px, -10px);
+        left: -202px;
         width: 210px;
-        text-align: right;     
+        text-align: right;  
       }
     }
     &__uob {
@@ -69,7 +68,7 @@
       }
     }
     &__monster-world {
-      margin-top: -90px;
+      margin-top: -40px;
       h1 {
         left: -109px;
         width: 210px;
@@ -77,7 +76,6 @@
       }
     }
     &__pensivity {
-      margin-top: -40px;
       h1 {
         left: -163px;
         width: 199px;
@@ -95,11 +93,11 @@
       }
     }
     &__the-creators {
-      margin-top: -100px;
+      margin-top: -50px;
       h1 {
         left: 510px;
         width: 199px;
-        top: 20px;
+        top: -31px;
         text-align: left;
       }
     }
@@ -133,7 +131,7 @@
   &__img {
     width: 100%;
   }
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     &__h1 {
       letter-spacing: 1px;
       color: black;

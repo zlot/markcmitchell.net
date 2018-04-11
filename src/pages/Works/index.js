@@ -61,7 +61,7 @@ export default class Works extends React.Component {
         <li>The Cycle Shift—Concept</li>
       </ul> */}
       <div className="row">
-        <div className='col-12 col-md-5 offset-md-1'>
+        <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-lg-1'>
           <div className='Work Works__how-ethical-are-you'>
             <h1 className='Work__h1'>How Ethical Are You? Fjord Trends 2018 Installation</h1>
             <img className='Work__img' src={test8} />
@@ -69,7 +69,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className="row">
-        <div className='col-12 col-md-5 offset-md-5'>
+        <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-xl-5'>
           <div className='Work Works__exp1'>
             <h1 className='Work__h1'>EXP 1: FIIRE</h1>
             <img className='Work__img rellax' data-rellax-speed={-0.65} src={test11} />
@@ -77,7 +77,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className="row">
-        <div className='col-12 col-md-5 offset-md-2'>
+        <div className='col-12 col-md-8 offset-md-4 col-lg-6 col-xl-5 offset-xl-2'>
           <div className='Work Works__vivid-2018'>
             <h1 className='Work__h1'>Vivid Sydney 2018 Proposal</h1>
             <img className='Work__img' src={test9} />
@@ -85,7 +85,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className="row">
-        <div className='col-12 col-md-5 offset-md-3'>
+        <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-xl-3'>
           <div className='Work Works__fjord-vibe'>
             <h1 className='Work__h1'>Fjord Vibe</h1>
             <img className='Work__img' src={test10} />
@@ -93,7 +93,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className="row">
-        <div className='col-12 col-md-5'>
+        <div className='col-12 col-xl-5'>
           <div className='Work Works__siam'>
             <h1 className='Work__h1 rellax' data-rellax-speed={-0.25}>Sydney Interactive Arts Meetup</h1>
             <img className='Work__img' src={img1} />
@@ -101,7 +101,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-5'>
+        <div className='col-12 col-md-8 offset-md-3 col-lg-6 col-xl-5 offset-xl-5'>
           <div className='Work Works__uts'>
             <h1 className='Work__h1'>Large Scale Interactive Wall—<br/>UTS</h1>
             <img className='Work__img' src={test} />
@@ -109,7 +109,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-1'>
+        <div className='col-12 col-md-8 offset-md-1 col-lg-6 col-xl-5 offset-xl-1'>
           <div className='Work Works__monster-world'>
             <h1 className='Work__h1 '>Monster World—Vivid Sydney</h1>
             <img className='Work__img rellax' src={test2} />
@@ -117,7 +117,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-5'>
+        <div className='col-12 col-md-8 offset-md-2 col-lg-6 col-xl-5 offset-xl-5'>
           <div className='Work Works__uob'>
             <h1 className='Work__h1 rellax' data-rellax-speed={-0.15}>United Overseas Bank Painting of the Year—ReImagined</h1>
             <img className='Work__img rellax' src={test23} />
@@ -125,7 +125,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-7'>
+        <div className='col-12 col-md-6 offset-md-6 col-lg-6 col-xl-5 offset-xl-7'>
           <div className='Work Works__pensivity'>
             <h1 className='Work__h1'>Pensivity—Beams Arts Festival</h1>
             <img className='Work__img' src={test3} />
@@ -133,7 +133,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-2'>
+        <div className='col-12 col-md-8 offset-md-4 col-lg-6 col-xl-5 offset-xl-2'>
           <div className='Work Works__graffiti-me'>
             <h1 className='Work__h1'>Graffiti Me—Vivid Sydney</h1>
             <img className='Work__img' src={test4} />
@@ -141,7 +141,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5'>
+        <div className='col-12 col-lg-5'>
           <div className='Work Works__the-creators rellax' data-rellax-speed={0.2}>
             <h1 className='Work__h1 rellax' data-rellax-speed={-0.6}>The Creators</h1>
             <img className='Work__img' src={test5} />
@@ -149,7 +149,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-6'>
+        <div className='col-12 col-md-5 offset-md-6 col-lg-6 col-xl-5 offset-xl-6'>
           <div className='Work Works__designing-4-mobile'>
             <h1 className='Work__h1'>Designing 4 Mobile Interaction w/ Augmented Objects</h1>
             <img className='Work__img' src={test6} />
@@ -157,7 +157,7 @@ export default class Works extends React.Component {
         </div>
       </div>
       <div className='row'>
-        <div className='col-12 col-md-5 offset-md-2'>
+        <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-xl-2'>
           <div className='Work Works__cycle-shift'>
             <h1 className='Work__h1'>The Cycle Shift—Concept</h1>
             <img className='Work__img' src={test7} />
