@@ -5,6 +5,7 @@ export default class Controls extends React.Component {
   componentDidMount = () => {
     this.el.addEventListener('touchmove', (e) => {
       e.preventDefault()
+      return
     })
   }
 
