@@ -38,6 +38,7 @@
     "react-dom": "^15.6.2",
     "react-error-overlay": "^1.0.9",
     "react-router-dom": "^4.2.2",
+    "rellax": "^1.5.1",
     "sass-loader": "^6.0.6",
     "smoothscroll": "^0.3.0",
     "style-loader": "0.18.2",
