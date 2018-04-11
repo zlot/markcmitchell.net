@@ -20,8 +20,6 @@ export default class Controls extends React.Component {
           xmlnsXlink="http://www.w3.org/1999/xlink" 
           x="0px" 
           y="0px" 
-          width="300px" 
-          height="300px" 
           viewBox="0 0 300 300" 
           enableBackground="new 0 0 300 300" 
           xmlSpace="preserve"
