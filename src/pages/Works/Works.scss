@@ -1,12 +1,168 @@
 /* Works */
 
 .Works {
-  width: 80%;
+  // width: 80%;
   margin: 0 auto;
+
+  .row {
+    margin-top: 0px;
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: $sm) {
+    
+    &__how-ethical-are-you {
+      h1 {
+        right: -215px;
+        width: 239px;
+      }
+    }
+    &__exp1 {
+      margin-top: -110px;
+
+      h1 {
+        right: -194px;
+        top: 180px;
+      }
+      img {
+        width: 320px;
+      }
+    }
+    &__vivid-2018 {
+      h1 {
+        left: -180px;
+        top: 51px;
+        width: 180px;
+        text-align: right;
+      }
+    }
+    &__fjord-vibe {
+      h1 {
+        right: -327px;
+        top: 180px;
+      }
+    }
+    &__siam {
+      h1 {
+        transform: translate(0, 59px);
+        top: -70px;
+        left: 114px;
+        width: 10px;
+        text-align: right;
+      }
+      img {
+        transform: translate(250px, -10px);
+      }
+    }
+    &__uts {
+      h1 {
+        transform: translate(-196px, -10px);
+        width: 210px;
+        text-align: right;     
+      }
+    }
+    &__uob {
+      h1 {
+        left: -210px;
+        width: 250px;
+        text-align: right;
+      }
+    }
+    &__monster-world {
+      margin-top: -90px;
+      h1 {
+        left: -109px;
+        width: 210px;
+        top: 0px;
+      }
+    }
+    &__pensivity {
+      margin-top: -40px;
+      h1 {
+        left: -163px;
+        width: 199px;
+        top: 0px;
+        text-align: left;
+      }
+    }
+    &__graffiti-me {
+      margin-top: -10px;
+      h1 {
+        left: -163px;
+        width: 89px;
+        top: 0px;
+        text-align: left;
+      }
+    }
+    &__the-creators {
+      margin-top: -100px;
+      h1 {
+        left: 510px;
+        width: 199px;
+        top: 20px;
+        text-align: left;
+      }
+    }
+    &__designing-4-mobile {
+      h1 {
+        left: -307px;
+        width: 317px;
+        top: -70px;
+        text-align: right;
+      }
+      img {
+        width: 410px;
+      }
+    }
+    &__cycle-shift {
+      h1 {
+        left: -307px;
+        width: 475px;
+        text-align: right;
+      }
+      img {
+        width: 475px;
+      }
+    }
+  }
 }
 
 
 .Work {
+  &__img {
+    width: 100%;
+  }
+  @media (min-width: $sm) {
+    &__h1 {
+      letter-spacing: 1px;
+      color: black;
+      font-size: 38px;
+      line-height: 1.15;
+      font-weight: 500;
+      width: 400px;
+      position: absolute;
+      z-index: 1;
+    }
+    &__img {
+      width: 487px; // half the width of the real image
+    }
+  }
+}
+
+
+.WorkDetail {
   width: 400px;
-  // width: 80%;
+  padding-right: 400px;
+  position: relative;
+
+  &__description {
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;    
+    width: 300px;
+    padding-bottom: 80px; // so absolute bottom doesn't cut into the navigation area
+  }
 }
