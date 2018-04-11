@@ -9,7 +9,7 @@
     margin-bottom: 60px;
   }
 
-  @media (min-width: $sm) {
+  @include media-breakpoint-up(sm) {
     
     &__how-ethical-are-you {
       h1 {

@@ -10,11 +10,10 @@
     animation-timing-function: linear;
     user-select: none;
     width: 300px;
-    @media (max-width: $sm) {
+    @include media-breakpoint-down(sm) {
       width: 170px;
       bottom: 0;
       top: 63vh;
-      
     }    
   }
   text {
