@@ -10,7 +10,6 @@ import test3 from './SydneyInteractiveArtsMeetup/test3.jpg'
 import test4 from './SydneyInteractiveArtsMeetup/test4.jpg'
 import test5 from './SydneyInteractiveArtsMeetup/test5.png'
 import test6 from './SydneyInteractiveArtsMeetup/test6.jpg'
-import test7 from './SydneyInteractiveArtsMeetup/test7.png'
 import test8 from './SydneyInteractiveArtsMeetup/test8.jpg'
 import test9 from './SydneyInteractiveArtsMeetup/test9.jpg'
 import test10 from './SydneyInteractiveArtsMeetup/test10.jpg'
@@ -21,7 +20,7 @@ import Rellax from 'rellax'
 const WorkExample = () => (
   <article className='WorkDetail'>
     <div className='Work__description'>
-      <h1>Sydney Interactive Arts Meetup</h1>
+      <h2>Sydney Interactive Arts Meetup</h2>
       <p>I co-founded the Sydney Interactive Arts Meetup to create a community where professionals, industry, and hobbyists can get together to discuss and collaborate on all things related to interactive art.</p>
       <p>Emila and myself have fostered a community to share ideas and projects, find collaborators, and get feedback and support from active and passionate members.</p>
       <p>The meetup welcomes creatives, makers, developers, artists, designers, musicians, creative coders, anyone interested in the intersection of art and technology.</p>
@@ -44,34 +43,30 @@ export default class Works extends React.Component {
   }
   render = () => (
     <div className='Works container'>
-      {/* <ul> 
-        <li>How Ethical Are You? Fjord Trends 2018 Installation</li>
-        <li>EXP 1: FIIRE</li>
-        <li>Vivid Sydney 2018 Proposal</li>
-        <li>Fjord Vibe</li>
-        <li>CP-ARMY Experience Prototype</li>
-        <li>Sydney Interactive Arts Meetup</li>
-        <li>Large Scale Interastive Wall For UTS</li>
-        <li>Monster World—Vivid Sydney</li>
-        <li>United Overseas Bank Painting of the Year—ReImagined</li>
-        <li>Pensivity—Beams Arts Festival</li>
-        <li>Graffiti Me—Vivid Sydney</li>
-        <li>The Creators</li>
-        <li>Designing 4 Mobile Interaction w/ Augmented Objects</li>
-        <li>The Cycle Shift—Concept</li>
-      </ul> */}
+      <div className='row'>
+        <div className='col-12'>
+          <h1>Works</h1>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-12'>
+          <p className='Works__under-construction'>🚨! page under construction !🚨</p>
+        </div>
+      </div>
       <div className="row">
         <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-lg-1'>
           <div className='Work Works__how-ethical-are-you'>
-            <h1 className='Work__h1'>How Ethical Are You? Fjord Trends 2018 Installation</h1>
-            <img className='Work__img' src={test8} />
+            <a href='#'>
+              <h2 className='Work__h2'>Are You Ethical?</h2>
+              <img className='Work__img' src={test8} />
+            </a>
           </div>
         </div>
       </div>
       <div className="row">
         <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-xl-5'>
           <div className='Work Works__exp1'>
-            <h1 className='Work__h1'>EXP 1: FIIRE</h1>
+            <h2 className='Work__h2'>EXP 1: FIIRE</h2>
             <img className='Work__img rellax' data-rellax-speed={-0.65} src={test11} />
           </div>
         </div>
@@ -79,7 +74,7 @@ export default class Works extends React.Component {
       <div className="row">
         <div className='col-12 col-md-8 offset-md-4 col-lg-6 col-xl-5 offset-xl-2'>
           <div className='Work Works__vivid-2018'>
-            <h1 className='Work__h1'>Vivid Sydney 2018 Proposal</h1>
+            <h2 className='Work__h2'>Vivid Sydney 2018 Proposal</h2>
             <img className='Work__img' src={test9} />
           </div>
         </div>
@@ -87,7 +82,7 @@ export default class Works extends React.Component {
       <div className="row">
         <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-xl-3'>
           <div className='Work Works__fjord-vibe'>
-            <h1 className='Work__h1'>Fjord Vibe</h1>
+            <h2 className='Work__h2'>Fjord Vibe</h2>
             <img className='Work__img' src={test10} />
           </div>
         </div>
@@ -95,7 +90,7 @@ export default class Works extends React.Component {
       <div className="row">
         <div className='col-12 col-xl-5'>
           <div className='Work Works__siam'>
-            <h1 className='Work__h1 rellax' data-rellax-speed={-0.25}>Sydney Interactive Arts Meetup</h1>
+            <h2 className='Work__h2 rellax' data-rellax-speed={-0.25}>Sydney Interactive Arts Meetup</h2>
             <img className='Work__img' src={img1} />
           </div>
         </div>
@@ -103,7 +98,7 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-md-8 offset-md-3 col-lg-6 col-xl-5 offset-xl-5'>
           <div className='Work Works__uts'>
-            <h1 className='Work__h1'>Large Scale Interactive Wall—<br/>UTS</h1>
+            <h2 className='Work__h2'>Large Scale Interactive Wall—<br/>UTS</h2>
             <img className='Work__img' src={test} />
           </div>
         </div>
@@ -111,7 +106,7 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-md-8 offset-md-1 col-lg-6 col-xl-5 offset-xl-1'>
           <div className='Work Works__monster-world'>
-            <h1 className='Work__h1 '>Monster World—Vivid Sydney</h1>
+            <h2 className='Work__h2 '>Monster World—Vivid Sydney</h2>
             <img className='Work__img rellax' src={test2} />
           </div>
         </div>
@@ -119,7 +114,7 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-md-8 offset-md-2 col-lg-6 col-xl-5 offset-xl-5'>
           <div className='Work Works__uob'>
-            <h1 className='Work__h1 rellax' data-rellax-speed={-0.15}>United Overseas Bank Painting of the Year—ReImagined</h1>
+            <h2 className='Work__h2 rellax' data-rellax-speed={-0.15}>United Overseas Bank Painting of the Year—ReImagined</h2>
             <img className='Work__img rellax' src={test23} />
           </div>
         </div>
@@ -127,7 +122,7 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-md-6 offset-md-6 col-lg-6 col-xl-5 offset-xl-7'>
           <div className='Work Works__pensivity'>
-            <h1 className='Work__h1'>Pensivity—Beams Arts Festival</h1>
+            <h2 className='Work__h2'>Pensivity—Beams Arts Festival</h2>
             <img className='Work__img' src={test3} />
           </div>
         </div>
@@ -135,7 +130,7 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-md-8 offset-md-4 col-lg-6 col-xl-5 offset-xl-2'>
           <div className='Work Works__graffiti-me'>
-            <h1 className='Work__h1'>Graffiti Me—Vivid Sydney</h1>
+            <h2 className='Work__h2'>Graffiti Me—Vivid Sydney</h2>
             <img className='Work__img' src={test4} />
           </div>
         </div>
@@ -143,7 +138,7 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-lg-5'>
           <div className='Work Works__the-creators rellax' data-rellax-speed={0.2}>
-            <h1 className='Work__h1 rellax' data-rellax-speed={-0.6}>The Creators</h1>
+            <h2 className='Work__h2 rellax' data-rellax-speed={-0.6}>The Creators</h2>
             <img className='Work__img' src={test5} />
           </div>
         </div>
@@ -151,20 +146,11 @@ export default class Works extends React.Component {
       <div className='row'>
         <div className='col-12 col-md-5 offset-md-6 col-lg-6 col-xl-5 offset-xl-6'>
           <div className='Work Works__designing-4-mobile'>
-            <h1 className='Work__h1'>Designing 4 Mobile Interaction w/ Augmented Objects</h1>
+            <h2 className='Work__h2'>Designing 4 Mobile Interaction w/ Augmented Objects</h2>
             <img className='Work__img' src={test6} />
           </div>
         </div>
       </div>
-      <div className='row'>
-        <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-xl-2'>
-          <div className='Work Works__cycle-shift'>
-            <h1 className='Work__h1'>The Cycle Shift—Concept</h1>
-            <img className='Work__img' src={test7} />
-          </div>
-        </div>
-      </div>
-      {/* <h1>Works</h1> */}
       {/* <h2>Coming soon 🏝</h2> */}
       {/* <WorkExample /> */}
     </div>
