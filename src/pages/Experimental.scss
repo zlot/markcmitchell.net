@@ -1,0 +1,20 @@
+/* Experimental */
+
+.Experimental {
+  p {
+    color: black;
+    font-size: 128px;
+    letter-spacing: -6px;
+    animation: bounce 2.2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(4px);
+  }
+
+  to {
+    transform: translateY(-4px);
+  }
+}
