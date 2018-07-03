@@ -15,6 +15,8 @@ const CELL_COLOR = '#ff0200';
 const MAX_ZOOM_IN_LEVEL = 8;
 const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
+const CELL_DRAWING_SIZE = 8;
+const CELL_ERASING_SIZE = 28;
 const PATTERN = 'markcmitchell-smaller-size'
 const PATTERN_PATH = 'my-patterns/'
 
@@ -566,7 +568,7 @@ export default function Main(props)
         const b = Math.abs(coords.y - last_mouse_y);
         const distanceBetweenLastMousePosAndCurrent = Math.hypot(a, b);
         // if mouse_is_drawing_cell_on_state is false, we're erasing. Make cell size bigger!
-        const CELL_SIZE_TO_DRAW_BASE = mouse_is_drawing_cell_on_state ? 8 : 28; // 8 before!
+        const CELL_SIZE_TO_DRAW_BASE = mouse_is_drawing_cell_on_state ? CELL_DRAWING_SIZE : CELL_ERASING_SIZE;
         const cellSizeToDrawSizedByVelocity = Math.floor(CELL_SIZE_TO_DRAW_BASE+(distanceBetweenLastMousePosAndCurrent*0.045));
                
         if(last_mouse_x === null || last_mouse_y === null) {
