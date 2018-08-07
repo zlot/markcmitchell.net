@@ -152,14 +152,15 @@ export default function Main(props)
 
 
     function setEraserCursor(useBool) {
+        const lifeCanvas = document.querySelector('.LifeCanvas')
         if(!useBool) {
-            if(document.body.classList.contains('eraser-cursor')) {
-                document.body.classList.remove('eraser-cursor');
-            }            
-            return;  
+            if(lifeCanvas.classList.contains('eraser-cursor')) {
+                lifeCanvas.classList.remove('eraser-cursor');
+            }
+            return;
         }
-        if(!document.body.classList.contains('eraser-cursor')) {
-            document.body.classList.add('eraser-cursor');
+        if(!lifeCanvas.classList.contains('eraser-cursor')) {
+            lifeCanvas.classList.add('eraser-cursor');
         }
     }
 
