@@ -17,8 +17,8 @@ const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
 const CELL_DRAWING_SIZE = 9;
 const CELL_ERASING_SIZE = 28;
-const PATTERN = 'markcmitchell-smaller-size'
-const PATTERN_PATH = 'my-patterns/'
+const PATTERN = 'markcmitchell-v2';
+const PATTERN_PATH = 'my-patterns/';
 
 export default function Main(props)
 {
