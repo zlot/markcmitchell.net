@@ -1,5 +1,8 @@
 "use strict";
 
+const Y_OFFSET_FOR_VIEWPORT_FITTING = 70; // hack so initial position correctly places Mark C Mitchell area into view of 1440x screen
+
+
 /** @constructor */
 export default function LifeCanvasDrawer()
 {
@@ -317,7 +320,7 @@ export default function LifeCanvasDrawer()
         }
 
         canvas_offset_x = x;
-        canvas_offset_y = y;
+        canvas_offset_y = y + Y_OFFSET_FOR_VIEWPORT_FITTING;
     }
 
     function draw_cell(x, y, set)
