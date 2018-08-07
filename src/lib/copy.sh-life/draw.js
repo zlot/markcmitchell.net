@@ -5,7 +5,6 @@ export default function LifeCanvasDrawer()
 {
 
     var
-
         // where is the viewport in pixels, from 0,0
         /** @type {number} */
         canvas_offset_x = 0,
@@ -27,7 +26,6 @@ export default function LifeCanvasDrawer()
         cell_color_rgb,
 
         drawer = this;
-
 
     this.cell_color = null;
     this.background_color = null;
