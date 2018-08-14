@@ -56,10 +56,8 @@ export default class Works extends React.Component {
       <div className="row">
         <div className='col-12 col-md-8 col-lg-6 col-xl-5 offset-lg-1'>
           <div className='Work Works__how-ethical-are-you'>
-            <a href='#'>
-              <h2 className='Work__h2'>Are You Ethical?</h2>
-              <img className='Work__img' src={test8} />
-            </a>
+            <h2 className='Work__h2'>Are You Ethical?</h2>
+            <img className='Work__img' src={test8} />
           </div>
         </div>
       </div>
