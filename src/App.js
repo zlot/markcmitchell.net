@@ -79,10 +79,9 @@ class App extends Component {
             <ul>
               <li><Link to='/works'>Works</Link></li>
               <li><Link to='/experimental'>Experimental</Link></li>
-              {/*<li><Link to='/'>Contact</Link></li>*/}
-              <li><Link to='/'>Twitter</Link></li>
-              <li><Link to='/'>LinkedIn</Link></li>
-              <li><Link to='/'>Email</Link></li>
+              <li><a href='https://twitter.com/zlot'>Twitter</a></li>
+              <li><a href='https://www.linkedin.com/in/mark-c-mitchell-96182311/'>LinkedIn</a></li>
+              <li><a href='mailto:mark@markcmitchell.net'>mark@markcmitchell.net</a></li>
             </ul>
           </div>
 
