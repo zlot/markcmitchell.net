@@ -326,7 +326,12 @@ export default function Main(props)
 
     function rle_link(id)
     {
-        return window.location.protocol + "//" + window.location.host + "/" + pattern_path + id + ".rle";
+        let host = window.location.host
+        // dirty hack for temporary testing on gh-pages
+        if(host.startsWith('zlot.github.io')) {
+            host = 'zlot.github.io/markcmitchell.net'
+        }
+        return window.location.protocol + "//" + host + "/" + pattern_path + id + ".rle";
     }
 
     /**
