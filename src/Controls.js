@@ -7,6 +7,7 @@ export default class Controls extends React.Component {
       e.preventDefault()
       return
     })
+    this.el.addEventListener('wheel', this.props.onWheelScroll)
   }
 
   render() {

@@ -55,6 +55,9 @@ class App extends Component {
   onMouseDown = (e) => {
     this.main.onMouseDown(e)
   }
+  onWheelScroll = (e) => {
+    this.main.onWheelScroll(e)
+  }
 
 
   render() {
@@ -64,7 +67,14 @@ class App extends Component {
       <Router history={this.history}>
         <div>
           <div className='canvas-container'>
-            <LifeCanvas run={this.run} isRunning={this.state.isRunning} zoomIn={this.zoomIn} zoomOut={this.zoomOut} onMouseDown={this.onMouseDown} />
+            <LifeCanvas 
+              run={this.run} 
+              isRunning={this.state.isRunning} 
+              zoomIn={this.zoomIn} 
+              zoomOut={this.zoomOut} 
+              onMouseDown={this.onMouseDown}
+              onWheelScroll={this.onWheelScroll}
+            />
             
             {/* Note:: add a recenter type of button!! */}
           </div>

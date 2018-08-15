@@ -6,7 +6,8 @@ const LifeCanvas = ({
     isRunning,
     zoomIn,
     zoomOut,
-    onMouseDown
+    onMouseDown,
+    onWheelScroll
 }) => (
 <div className='LifeCanvas' onMouseDown={onMouseDown}>
 
@@ -17,6 +18,7 @@ const LifeCanvas = ({
         runText={isRunning ? 'Stop😳' : 'Run🔥'} 
         zoomIn={zoomIn} 
         zoomOut={zoomOut}
+        onWheelScroll={onWheelScroll}
     />
 </div>
 )

@@ -163,6 +163,12 @@ export default function Main(props)
         }
     }
 
+    this.onWheelScroll = (e) => {
+        e.preventDefault();
+        drawer.move(-e.deltaX, -e.deltaY);
+        lazy_redraw(life.root);
+    }
+
     setup.call(this)
     
     // setup
@@ -234,11 +240,7 @@ export default function Main(props)
                 return false;
             };
 
-            drawer.canvas.onwheel = function(e) {
-                e.preventDefault();
-                drawer.move(-e.deltaX, -e.deltaY);
-                lazy_redraw(life.root);
-            }
+            drawer.canvas.onwheel = this.onWheelScroll
 
             drawer.canvas.addEventListener("DOMMouseScroll", drawer.canvas.onmousewheel, false);
 
