@@ -33,7 +33,6 @@ export default function Main(props)
     var
 
         // functions which is called when the pattern stops running
-        /** @type {function()|undefined} */
         onstop,
 
         last_mouse_x,
@@ -49,10 +48,7 @@ export default function Main(props)
         /** @type {number} */
         max_fps,
 
-        /**
-         * path to the folder with all patterns
-         * @const
-         */
+        // path to the folder with all patterns
         pattern_path = PATTERN_PATH,
 
         loaded = false,
@@ -181,7 +177,7 @@ export default function Main(props)
         
         if(!drawer.init(document.getElementsByClassName('LifeCanvas')[0]))
         {
-            alert("Canvas-less browsers are not supported. I'm sorry for that.");
+            alert("Sorry, something's gone wrong ☹️. Does your browser allow Canvas elements to load?");
             return;
         }
         
@@ -577,7 +573,7 @@ export default function Main(props)
         // if mouse_is_drawing_cell_on_state is false, we're erasing. Make cell size bigger!
         const CELL_SIZE_TO_DRAW_BASE = mouse_is_drawing_cell_on_state ? CELL_DRAWING_SIZE : CELL_ERASING_SIZE;
         const cellSizeToDrawSizedByVelocity = Math.floor(CELL_SIZE_TO_DRAW_BASE+(distanceBetweenLastMousePosAndCurrent*0.045));
-               
+        
         if(last_mouse_x === null || last_mouse_y === null) {
             setLastMousePosition(coords);
             drawCellsWithinSize(coords, CELL_SIZE_TO_DRAW_BASE)
