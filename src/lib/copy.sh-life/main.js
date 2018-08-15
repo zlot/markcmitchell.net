@@ -573,7 +573,7 @@ export default function Main(props)
 
         const a = Math.abs(coords.x - last_mouse_x);
         const b = Math.abs(coords.y - last_mouse_y);
-        const distanceBetweenLastMousePosAndCurrent = Math.hypot(a, b);
+        const distanceBetweenLastMousePosAndCurrent = a + b;
         // if mouse_is_drawing_cell_on_state is false, we're erasing. Make cell size bigger!
         const CELL_SIZE_TO_DRAW_BASE = mouse_is_drawing_cell_on_state ? CELL_DRAWING_SIZE : CELL_ERASING_SIZE;
         const cellSizeToDrawSizedByVelocity = Math.floor(CELL_SIZE_TO_DRAW_BASE+(distanceBetweenLastMousePosAndCurrent*0.045));
