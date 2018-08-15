@@ -53,7 +53,6 @@ export default function Main(props)
          * path to the folder with all patterns
          * @const
          */
-        // pattern_path = "examples/",
         pattern_path = PATTERN_PATH,
 
         loaded = false,
