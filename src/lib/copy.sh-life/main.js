@@ -119,7 +119,7 @@ export default function Main(props)
             window.addEventListener("mousemove", do_field_draw, true);
             window.addEventListener("touchmove", onTouchMoveWhileTouchDown, true);
             window.removeEventListener("mousemove", changeCursorToEraserOnHover, true);
-            setEraserCursor(!mouse_is_drawing_cell_on_state)
+            setEraserCursor(!mouse_is_drawing_cell_on_state);
             do_field_draw(e); // do it on first mousedown. listener takes care of holding down
         }
 
@@ -435,10 +435,10 @@ export default function Main(props)
         running = true;
         props.setIsRunning(true);
 
-        // runChangeRulesLive()
-        // Occasionally change rules to encourage more strange growth
+        // runOccasionalMutation()
+        // Occasionally change rules to encourage more strange growth. Encourage mutation.
         // Also increases CPU load. Might skip doing this for now.
-        function runChangeRulesLive() {
+        function runOccasionalMutation() {
             setInterval(() => {
                 // const coralRule = {rule_s: 496, rule_b: 8};
                 // const dayAndNightRule = {rule_s: 472, rule_b: 456};
