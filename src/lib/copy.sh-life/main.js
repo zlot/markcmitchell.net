@@ -204,11 +204,6 @@ export default function Main(props)
                 requestAnimationFrame(lazy_redraw.bind(0, life.root));
             }, 300))
 
-            drawer.canvas.addEventListener('dblclick', (e) => {
-                this.userZoomIn();
-                return false;
-            })
-
             drawer.canvas.addEventListener("touchstart", (e) => {
                 // left mouse simulation
                 var ev = {
