@@ -161,7 +161,7 @@ export default function Main(props)
 
     this.onWheelScroll = (e) => {
         e.preventDefault();
-        drawer.move(-e.deltaX, -e.deltaY);
+        drawer.move(Math.floor(-e.deltaX), Math.floor(-e.deltaY));
         lazy_redraw(life.root);
     }
 
