@@ -1,6 +1,7 @@
 import LifeUniverse from './life';
 import LifeCanvasDrawer from './draw';
 import formats from './formats';
+const Hammer = require('../hammer')
 
 function debug() {
     if(process.env.NODE_ENV === 'development') {
@@ -41,6 +42,7 @@ export default function Main(props)
         mouse_is_drawing_cell_on_state,
         // is true when pattern is loaded
         isReady = false,
+        isPanning = false,
 
         /** @type {boolean} */
         running = false,
@@ -210,7 +212,14 @@ export default function Main(props)
                     pageX: e.changedTouches[0].pageX,
                     pageY: e.changedTouches[0].pageY,
                 };
-                this.onMouseDown(ev);
+                window.removeEventListener("touchmove", onTouchMoveWhileTouchDown, true);
+
+                // only let drawing happen if there's one and only one touch going on!
+                if(e.touches.length === 1) {
+                    last_mouse_x = null;
+                    last_mouse_y = null;
+                    this.onMouseDown(ev);
+                }
                 e.preventDefault();
             }, false);
 
@@ -234,6 +243,45 @@ export default function Main(props)
 
             drawer.canvas.addEventListener("DOMMouseScroll", this.onWheelScroll);
 
+            const hammerManager = new Hammer.Manager(drawer.canvas);
+            const pinch = new Hammer.Pinch({threshold: 0.7});
+            const pan = new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0, pointers: 2});
+            pinch.recognizeWith(pan);
+            hammerManager.add(pinch);
+            hammerManager.add(pan);
+
+
+            hammerManager.on('panstart', e => {
+                isPanning = true
+            });
+            hammerManager.on('panmove', e => {
+                this.onWheelScroll({preventDefault: function() {}, deltaX: -e.deltaX*0.06, deltaY: -e.deltaY*0.06})
+            });
+            hammerManager.on('panend', e => {
+                isPanning = false
+            });
+            hammerManager.on('pancancel', e => {
+                isPanning = false
+            });
+            // Code to pinch in and out only once per pinch/zoom gesture.
+            const hammerPinchIn = e => {
+                if(e.scale < 0.35) {
+                    this.userZoomOut();
+                }
+                hammerManager.off('pinchin', hammerPinchIn);
+            };
+            const hammerPinchOut = e => {
+                if(e.scale > 1.4) {
+                    this.userZoomIn();
+                }
+                hammerManager.off('pinchout', hammerPinchOut);
+            };
+            hammerManager.on('pinchin', hammerPinchIn);
+            hammerManager.on('pinchout', hammerPinchOut);
+            hammerManager.on('pinchend', e => {
+                hammerManager.on('pinchin', hammerPinchIn);
+                hammerManager.on('pinchout', hammerPinchOut);
+            })
 
             window.onkeydown = function(e)
             {
@@ -533,6 +581,8 @@ export default function Main(props)
     }
 
     function onTouchMoveWhileTouchDown(e) {
+        if(isPanning) return;
+
         var ev = {
             pageX: e.changedTouches[0].pageX,
             pageY: e.changedTouches[0].pageY,
