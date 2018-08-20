@@ -18,6 +18,7 @@ const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
 const CELL_DRAWING_SIZE = 8; // note, must be an even number to correctly align drawn cells to grid
 const CELL_ERASING_SIZE = 28; // note, must be an even number to correctly align erased cells to grid
+const BOUNDARY_TO_SHOW_OUT_OF_BOUNDS_CONTROL = 2500
 const PATTERN = 'markcmitchell-v2';
 const PATTERN_PATH = 'my-patterns/';
 
@@ -175,8 +176,8 @@ export default function Main(props)
         const {x, y} = drawer.move(Math.floor(-e.deltaX), Math.floor(-e.deltaY));
         // Also, put a debouncer here! Don't need this running on every damn wheelscroll!
         // if our coords are beyond bounds, show re-center button
-        if(Math.abs(drawer.initialCanvasXPos - x/drawer.cell_width) > 2500 ||
-            Math.abs(drawer.initialCanvasYPos - y/drawer.cell_width) > 2500) {
+        if(Math.abs(drawer.initialCanvasXPos - x/drawer.cell_width) > BOUNDARY_TO_SHOW_OUT_OF_BOUNDS_CONTROL ||
+            Math.abs(drawer.initialCanvasYPos - y/drawer.cell_width) > BOUNDARY_TO_SHOW_OUT_OF_BOUNDS_CONTROL) {
                 if(!outOfBounds) {
                     outOfBounds = true;
                     setShowOutOfBoundsControl(true);
