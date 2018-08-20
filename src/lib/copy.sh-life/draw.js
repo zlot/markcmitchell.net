@@ -33,10 +33,6 @@ export default function LifeCanvasDrawer()
     this.cell_color = null;
     this.background_color = null;
 
-    // given as ratio of cell size
-    this.border_width = 0;
-
-
     this.init = init;
     this.redraw = redraw;
     this.move = move;
