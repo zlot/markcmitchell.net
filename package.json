@@ -1,7 +1,7 @@
 {
   "name": "markcmitchell.net",
   "version": "0.1.0",
-  "homepage": "https://zlot.github.io/markcmitchell.net/",
+  "homepage": "https://markcmitchell.net/",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.1",
