@@ -2,6 +2,7 @@ import LifeUniverse from './life';
 import LifeCanvasDrawer from './draw';
 import formats from './formats';
 const Hammer = require('../hammer')
+import throttle from 'lodash.throttle'
 
 function debug() {
     if(process.env.NODE_ENV === 'development') {
@@ -173,11 +174,9 @@ export default function Main(propsObj)
         }
     }
 
-    this.onWheelScroll = (e) => {
-        e.preventDefault();
-        const {x, y} = drawer.move(Math.floor(-e.deltaX), Math.floor(-e.deltaY));
-        // Also, put a debouncer here! Don't need this running on every damn wheelscroll!
-        // if our coords are beyond bounds, show re-center button
+    const checkIfOutOfBoundsThrottled = throttle(_checkIfOutOfBounds, 700)
+    // if our coords are beyond bounds, show re-center button
+    function _checkIfOutOfBounds(x, y) {
         if(Math.abs(drawer.initialCanvasXPos - x/drawer.cell_width) > BOUNDARY_TO_SHOW_OUT_OF_BOUNDS_CONTROL ||
             Math.abs(drawer.initialCanvasYPos - y/drawer.cell_width) > BOUNDARY_TO_SHOW_OUT_OF_BOUNDS_CONTROL) {
                 if(!outOfBounds) {
@@ -190,6 +189,13 @@ export default function Main(propsObj)
                 setShowOutOfBoundsControl(false);  
             };
         }
+    }
+
+    this.onWheelScroll = (e) => {
+        e.preventDefault();
+        const {x, y} = drawer.move(Math.floor(-e.deltaX), Math.floor(-e.deltaY));
+        checkIfOutOfBoundsThrottled(x, y)
+
         lazy_redraw(life.root);
     }
 
