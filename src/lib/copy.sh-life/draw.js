@@ -315,8 +315,10 @@ export default function LifeCanvasDrawer()
             y = canvas_height >> 1;
         }
 
-        canvas_offset_x = x;
-        canvas_offset_y = y + Y_OFFSET_FOR_VIEWPORT_FITTING;
+        this.initialCanvasXPos = x;
+        this.initialCanvasYPos = y + Y_OFFSET_FOR_VIEWPORT_FITTING;
+        canvas_offset_x = this.initialCanvasXPos;
+        canvas_offset_y = this.initialCanvasYPos;
     }
 
     function draw_cell(x, y, set)
