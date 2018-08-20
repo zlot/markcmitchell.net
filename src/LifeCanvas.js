@@ -7,7 +7,9 @@ const LifeCanvas = ({
     zoomIn,
     zoomOut,
     onMouseDown,
-    onWheelScroll
+    onWheelScroll,
+    showOutOfBoundsControl,
+    resetToInitialCanvasPos
 }) => (
 <div className='LifeCanvas' onMouseDown={onMouseDown}>
 
@@ -19,6 +21,8 @@ const LifeCanvas = ({
         zoomIn={zoomIn} 
         zoomOut={zoomOut}
         onWheelScroll={onWheelScroll}
+        showOutOfBoundsControl={showOutOfBoundsControl}
+        resetToInitialCanvasPos={resetToInitialCanvasPos}
     />
 </div>
 )

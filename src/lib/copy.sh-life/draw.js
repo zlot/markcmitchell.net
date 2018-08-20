@@ -44,8 +44,7 @@ export default function LifeCanvasDrawer()
     this.center_view = center_view;
     this.zoom_to = zoom_to;
     this.pixel2cell = pixel2cell;
-
-
+    this.resetToInitialCanvasPos = resetToInitialCanvasPos;
 
     function init(dom_parent)
     {
@@ -246,6 +245,7 @@ export default function LifeCanvasDrawer()
     {
         canvas_offset_x += dx;
         canvas_offset_y += dy;
+        return {x: canvas_offset_x, y: canvas_offset_y}
 
         // This code is faster for patterns with a huge density (for instance, spacefiller)
         // It causes jitter for all other patterns though, that's why the above version is preferred
@@ -319,6 +319,11 @@ export default function LifeCanvasDrawer()
         this.initialCanvasYPos = y + Y_OFFSET_FOR_VIEWPORT_FITTING;
         canvas_offset_x = this.initialCanvasXPos;
         canvas_offset_y = this.initialCanvasYPos;
+    }
+
+    function resetToInitialCanvasPos() {
+        canvas_offset_x = this.initialCanvasXPos
+        canvas_offset_y = this.initialCanvasYPos
     }
 
     function draw_cell(x, y, set)

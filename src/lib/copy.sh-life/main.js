@@ -43,6 +43,7 @@ export default function Main(props)
         // is true when pattern is loaded
         isReady = false,
         isPanning = false,
+        outOfBounds = false,
 
         /** @type {boolean} */
         running = false,
@@ -101,6 +102,15 @@ export default function Main(props)
         function isAtMaxZoomOut() {
             return drawer.cell_width <= MAX_ZOOM_OUT_LEVEL ? true : false;
         }
+    }
+
+    this.resetToInitialCanvasPos = () => {
+        drawer.resetToInitialCanvasPos();
+        setShowOutOfBoundsControl(false);
+        for(let i=0; i<3; i++) {
+            this.userZoomOut();
+        }
+        drawer.redraw(life.root)
     }
 
     this.onMouseDown = (e) => 
@@ -162,7 +172,21 @@ export default function Main(props)
 
     this.onWheelScroll = (e) => {
         e.preventDefault();
-        drawer.move(Math.floor(-e.deltaX), Math.floor(-e.deltaY));
+        const {x, y} = drawer.move(Math.floor(-e.deltaX), Math.floor(-e.deltaY));
+        // Also, put a debouncer here! Don't need this running on every damn wheelscroll!
+        // if our coords are beyond bounds, show re-center button
+        if(Math.abs(drawer.initialCanvasXPos - x/drawer.cell_width) > 2500 ||
+            Math.abs(drawer.initialCanvasYPos - y/drawer.cell_width) > 2500) {
+                if(!outOfBounds) {
+                    outOfBounds = true;
+                    setShowOutOfBoundsControl(true);
+                };
+        } else {
+            if(outOfBounds) {
+                outOfBounds = false;
+                setShowOutOfBoundsControl(false);  
+            };
+        }
         lazy_redraw(life.root);
     }
 

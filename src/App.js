@@ -22,7 +22,8 @@ class App extends Component {
 
     this.history = createHistory()
     this.state = {
-      isRunning: false
+      isRunning: false,
+      showOutOfBoundsControl: false
     }
     // Listen for changes to the current location.
     const unlisten = this.history.listen((location, action) => {
@@ -39,7 +40,11 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.main = new Main({setIsRunning: this.setIsRunning})
+    this.main = new Main({setIsRunning: this.setIsRunning, setShowOutOfBoundsControl: this.setShowOutOfBoundsControl})
+  }
+
+  setShowOutOfBoundsControl = (bool) => {
+    this.setState({showOutOfBoundsControl: bool})
   }
 
   run = () => {
@@ -58,6 +63,9 @@ class App extends Component {
   onWheelScroll = (e) => {
     this.main.onWheelScroll(e)
   }
+  resetToInitialCanvasPos = () => {
+    this.main.resetToInitialCanvasPos()
+  }
 
 
   render() {
@@ -74,6 +82,8 @@ class App extends Component {
               zoomOut={this.zoomOut} 
               onMouseDown={this.onMouseDown}
               onWheelScroll={this.onWheelScroll}
+              showOutOfBoundsControl={this.state.showOutOfBoundsControl}
+              resetToInitialCanvasPos={this.resetToInitialCanvasPos}
             />
             
             {/* Note:: add a recenter type of button!! */}

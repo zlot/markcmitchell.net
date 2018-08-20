@@ -33,6 +33,19 @@
   }
 }
 
+.return-to-centre {
+  cursor: pointer;
+  rect:hover + path {
+    transform: scale(1.15) translate(-5px, -5px);
+  }
+  path {
+    transition: 0.15s transform ease-out;
+    &:hover {
+      transform: scale(1.15) translate(-5px, -5px);
+    }
+  }
+}
+
 
 @keyframes rotate {
   from { transform: rotate(0); }
