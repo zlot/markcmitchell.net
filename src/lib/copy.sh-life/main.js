@@ -16,8 +16,8 @@ const CELL_COLOR = '#ff0200';
 const MAX_ZOOM_IN_LEVEL = 8;
 const MAX_ZOOM_OUT_LEVEL = 0.5;
 const CELL_BORDER = 0.25; // 0 to 0.5. default was 0.25
-const CELL_DRAWING_SIZE = 9;
-const CELL_ERASING_SIZE = 28;
+const CELL_DRAWING_SIZE = 8; // note, must be an even number to correctly align drawn cells to grid
+const CELL_ERASING_SIZE = 28; // note, must be an even number to correctly align erased cells to grid
 const PATTERN = 'markcmitchell-v2';
 const PATTERN_PATH = 'my-patterns/';
 
