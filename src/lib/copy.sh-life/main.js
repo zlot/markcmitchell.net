@@ -64,7 +64,6 @@ export default function Main(props)
         window.mozRequestAnimationFrame ||
         setTimeout;
 
-
     this.userRun = () => {
         if(running) {
             stop();
@@ -231,9 +230,10 @@ export default function Main(props)
                 return false;
             };
 
-            drawer.canvas.onwheel = this.onWheelScroll
+            drawer.canvas.onwheel = this.onWheelScroll;
 
-            drawer.canvas.addEventListener("DOMMouseScroll", drawer.canvas.onmousewheel, false);
+            drawer.canvas.addEventListener("DOMMouseScroll", this.onWheelScroll);
+
 
             window.onkeydown = function(e)
             {
