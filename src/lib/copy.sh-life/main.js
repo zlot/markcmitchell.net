@@ -22,7 +22,7 @@ const BOUNDARY_TO_SHOW_OUT_OF_BOUNDS_CONTROL = 2500
 const PATTERN = 'markcmitchell-v2';
 const PATTERN_PATH = 'my-patterns/';
 
-export default function Main(props)
+export default function Main(propsObj)
 {
     if(!document.addEventListener) {
         // IE 8 seems to switch into rage mode if the code is only loaded partly, so we are saying goodbye earlier
@@ -30,7 +30,9 @@ export default function Main(props)
     }
     function $(id) {
         return document.getElementById(id);
-    }    
+    }
+
+    const {setIsRunning, setShowOutOfBoundsControl} = propsObj;
 
     var
 
@@ -81,7 +83,7 @@ export default function Main(props)
 
     this.userStop = () => {
         stop();
-        props.setIsRunning(false)
+        setIsRunning(false)
     }
 
     this.userZoomIn = () => {
@@ -408,7 +410,7 @@ export default function Main(props)
         if(running)
         {
             running = false;
-            props.setIsRunning(false);
+            setIsRunning(false);
             debug("Run");
 
             onstop = callback;
@@ -506,7 +508,7 @@ export default function Main(props)
             per_frame = frame_time;
 
         running = true;
-        props.setIsRunning(true);
+        setIsRunning(true);
 
         // runOccasionalMutation()
         // Occasionally change rules to encourage more strange growth. Encourage mutation.
@@ -631,7 +633,7 @@ export default function Main(props)
     // This object holds all the pixels that have been drawn during one mousedown.
     const localDrawnPixels = Object.create(null); 
     /*
-     * The mousemove event which draw pixels
+     * The mousemove event which draws pixels
      */
     function do_field_draw(e)
     {
