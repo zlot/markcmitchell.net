@@ -105,6 +105,8 @@ export default function Main(props)
     this.onMouseDown = (e) => 
     {
         if(!isReady) return;
+        last_mouse_x = null;
+        last_mouse_y = null;
 
         if(e.nativeEvent.which === 3 || e.nativeEvent.which === 2) {}
         else if(e.nativeEvent.which === 1)
@@ -127,8 +129,6 @@ export default function Main(props)
     };    
 
     this.onMouseUp = (e) => {
-        last_mouse_x = null;
-        last_mouse_y = null;
         window.removeEventListener("mousemove", do_field_draw, true);
         window.removeEventListener("touchmove", onTouchMoveWhileTouchDown, true);
         window.addEventListener("mousemove", changeCursorToEraserOnHover, true);
