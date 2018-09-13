@@ -94,7 +94,7 @@ export default function Main(propsObj)
         lazy_redraw(life.root);
 
         function isAtMaxZoomIn() {
-            return drawer.cell_width >= MAX_ZOOM_IN_LEVEL ? true : false;
+            return drawer.cell_width >= MAX_ZOOM_IN_LEVEL;
         }
     }
     this.userZoomOut = () => {
@@ -104,7 +104,7 @@ export default function Main(propsObj)
         lazy_redraw(life.root);
 
         function isAtMaxZoomOut() {
-            return drawer.cell_width <= MAX_ZOOM_OUT_LEVEL ? true : false;
+            return drawer.cell_width <= MAX_ZOOM_OUT_LEVEL;
         }
     }
 
