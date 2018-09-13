@@ -20,6 +20,7 @@ const LifeCanvas = ({
         runText={isRunning ? 'Stop🛑' : 'Mutate🔥'} 
         zoomIn={zoomIn} 
         zoomOut={zoomOut}
+        onMouseDown={onMouseDown}
         onWheelScroll={onWheelScroll}
         showOutOfBoundsControl={showOutOfBoundsControl}
         resetToInitialCanvasPos={resetToInitialCanvasPos}

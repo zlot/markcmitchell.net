@@ -1,20 +1,38 @@
 import React from 'react'
 
 export default class Controls extends React.Component {
+  constructor(props) {
+    super(props)
+    this.circleEl = React.createRef()
+  }
 
   componentDidMount = () => {
-    this.el.addEventListener('touchmove', (e) => {
+    // Don't allow a dragging movement to happen on the controls which moves 
+    // the page around on iOS
+    this.circleEl.current.addEventListener('touchmove', (e) => {
       e.preventDefault()
       return
     })
-    this.el.addEventListener('wheel', this.props.onWheelScroll)
+    
+    // Send off the touchstart so we can draw to the canvas
+    this.circleEl.current.addEventListener('touchstart', (e) => {
+      // simulate left-mouse click with nativeEvent; and pass pageX and pageY (don't need the rest)
+      const ev = {
+        nativeEvent: {which: 1},
+        pageX: e.changedTouches[0].pageX,
+        pageY: e.changedTouches[0].pageY,
+      }
+      this.props.onMouseDown(ev)
+    })
+
+    this.circleEl.current.addEventListener('wheel', this.props.onWheelScroll)
   }
 
   render() {
     const {run, runText, zoomIn, zoomOut, showOutOfBoundsControl, resetToInitialCanvasPos} = this.props
 
     return (
-      <div id="circle" ref={el => {this.el = el}}>
+      <div id="circle" ref={this.circleEl}>
         
         <svg 
           version="1.1" 
