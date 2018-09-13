@@ -318,9 +318,8 @@ export default function Main(propsObj)
 
             window.onkeydown = function(e)
             {
-                var chr = e.which,
-                    do_redraw = false,
-                    target = e.target.nodeName;
+                var chr = e.which;
+                var do_redraw = false;
                     
                 if(e.ctrlKey || e.shiftKey || e.altKey) {
                     return true;
