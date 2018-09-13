@@ -1,4 +1,6 @@
 #circle {
+  user-select: none;
+  touch-action: none;
   svg { 
     position: absolute; 
     display: block;
