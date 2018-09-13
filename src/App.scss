@@ -7,6 +7,10 @@ $erasorCursor: url('data:image/x-icon;base64,AAACAAEAICAQAAMADwDoAgAAFgAAACgAAAA
 @import './pages/Works/Works.scss';
 @import './pages/Experimental.scss';
 
+
+html {
+  touch-action: manipulation !important;  
+}
 body {
   height: 100%;
   width: 100%;
