@@ -77,6 +77,11 @@ a {
       margin-left: 1.75rem;
     }
   }
+  @include media-breakpoint-down(sm) {
+    font-size: 12px;
+    padding: 0;
+
+  }  
 }
 
 .page {
