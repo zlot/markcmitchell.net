@@ -36,7 +36,7 @@ export default class Controls extends React.Component {
             <text>
               <textPath xlinkHref="#circlePath">
                 <a onMouseDown={(e) => {e.stopPropagation(); run()}}>{runText}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a onMouseDown={(e) => {e.stopPropagation(); zoomIn()}}>Zoom +</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a onMouseDown={(e) => {e.stopPropagation(); zoomIn()}}>Zoom +</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a onMouseDown={(e) => {e.stopPropagation(); zoomOut()}}>Zoom −</a>
               </textPath>
             </text>
