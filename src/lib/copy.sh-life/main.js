@@ -3,6 +3,7 @@ import LifeCanvasDrawer from './draw';
 import formats from './formats';
 const Hammer = require('../hammer')
 import throttle from 'lodash.throttle'
+import debounce from 'lodash.debounce'
 
 function debug() {
     if(process.env.NODE_ENV === 'development') {
@@ -297,18 +298,21 @@ export default function Main(propsObj)
                 isPanning = false
             });
             // Code to pinch in and out only once per pinch/zoom gesture.
-            const hammerPinchIn = e => {
+            function _pinchIn(e) {
+                hammerManager.off('pinchin', hammerPinchIn);
                 if(e.scale < 0.35) {
                     this.userZoomOut();
                 }
-                hammerManager.off('pinchin', hammerPinchIn);
-            };
-            const hammerPinchOut = e => {
+            };           
+            function _pinchOut(e) {
+                hammerManager.off('pinchout', hammerPinchOut);
                 if(e.scale > 1.4) {
                     this.userZoomIn();
                 }
-                hammerManager.off('pinchout', hammerPinchOut);
-            };
+            }
+            const hammerPinchIn = (debounce(_pinchIn, 50, {leading: true, trailing: false})).bind(this);
+            const hammerPinchOut = (debounce(_pinchOut, 50, {leading: true, trailing: false})).bind(this);
+            
             hammerManager.on('pinchin', hammerPinchIn);
             hammerManager.on('pinchout', hammerPinchOut);
             hammerManager.on('pinchend', e => {
