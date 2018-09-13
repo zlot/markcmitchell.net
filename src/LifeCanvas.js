@@ -17,7 +17,7 @@ const LifeCanvas = ({
 
     <Controls 
         run={run} 
-        runText={isRunning ? 'Stop🛑' : 'Run🔥'} 
+        runText={isRunning ? 'Stop🛑' : 'Mutate🔥'} 
         zoomIn={zoomIn} 
         zoomOut={zoomOut}
         onWheelScroll={onWheelScroll}
