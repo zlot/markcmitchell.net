@@ -343,12 +343,12 @@ export default function Main(propsObj)
                 }
                 else if(chr === 27) {
                     // escape
-                    this.userStop()
+                    this.userStop();
                     return false;
                 }
                 else if(chr === 13) {   
                     // enter
-                    this.userRun()
+                    this.userRun();
                     return false;
                 }
                 else if(chr === 189 || chr === 173 || chr === 109) {
